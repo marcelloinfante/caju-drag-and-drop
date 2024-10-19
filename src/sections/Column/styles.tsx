@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 const registrationStatusStyles: {
   [key in string]: { background: string; title: string };
 } = {
@@ -16,21 +17,13 @@ const registrationStatusStyles: {
   },
 };
 
-export const Container = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 24px;
-  justify-content: center;
-  margin-top: 24px;
-`;
-
 export const Column = styled.div<{ status: any }>`
-  height: auto;
   background-color: ${({ status }) =>
     registrationStatusStyles[status].background};
   border-radius: 32px;
-  min-height: 80vh;
-  max-height: 80vh;
+  max-height: 70vh;
+  width: 100%;
+  padding: 16px;
 `;
 
 export const TitleColumn = styled.h3<{ status: any }>`
@@ -40,6 +33,5 @@ export const TitleColumn = styled.h3<{ status: any }>`
 `;
 
 export const CollumContent = styled.div`
-  overflow: auto;
-  max-height: 85%;
+  height: 100%;
 `;
