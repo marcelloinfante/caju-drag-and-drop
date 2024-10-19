@@ -7,9 +7,9 @@ const axiosInstance = axios.create({ baseURL: HOST_API });
 export default axiosInstance;
 
 export const endpoints = {
-  registration: {
-    root: "/registration",
-    item: (id: string) => `/registration/${id}`,
-    cpf: (cpf?: string) => `/registration?cpf=${cpf}`,
+  registrations: {
+    root: "/registrations",
+    item: (id: string) => `/registrations/${id}`,
+    cpf: (cpf?: string) => `/registrations?cpf=${cpf || ""}`,
   },
 };
