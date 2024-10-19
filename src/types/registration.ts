@@ -1,6 +1,6 @@
 export enum StatusEnum {
   REVIEW = "REVIEW",
-  APROVED = "APROVED",
+  APPROVED = "APPROVED",
   REPROVED = "REPROVED",
 }
 
@@ -16,9 +16,6 @@ export interface RegistrationRead extends RegistrationBase {
   status: StatusEnum;
 }
 
-export interface RegistrationCreate extends RegistrationBase {}
+export interface RegistrationUpdate extends RegistrationRead {}
 
-export interface RegistrationUpdate {
-  id: string;
-  status: StatusEnum;
-}
+export interface RegistrationCreate extends RegistrationBase {}
