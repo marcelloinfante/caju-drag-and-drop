@@ -1,13 +1,27 @@
-import Collumns from "./components/Columns";
-import * as S from "./styles";
-import { SearchBar } from "./components/Searchbar";
+import { useEffect } from "react";
+
+import Collumns from "../../sections/Columns";
+import { SearchBar } from "../../sections/Searchbar";
+import Container from "~/components/Container";
+
+import { useRegistrationContext } from "~/contexts/registration/hook";
 
 const DashboardPage = () => {
+  const { loading, readRegistrations } = useRegistrationContext();
+
+  useEffect(() => {
+    readRegistrations();
+  }, []);
+
+  if (loading) {
+    <>Carregando...</>;
+  }
+
   return (
-    <S.Container>
+    <Container>
       <SearchBar />
-      <Collumns registrations={[]} />
-    </S.Container>
+      <Collumns />
+    </Container>
   );
 };
 export default DashboardPage;
