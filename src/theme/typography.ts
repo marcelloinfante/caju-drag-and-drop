@@ -100,7 +100,7 @@ export const typography: Typography = {
     fontSize: pxToRem(14),
   },
   caption: {
-    fontWeight: 400,
+    fontWeight: 300,
     lineHeight: 1.5,
     fontSize: pxToRem(12),
   },

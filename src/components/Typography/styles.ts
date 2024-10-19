@@ -16,7 +16,7 @@ interface TypographyProps {
     | "textDisabled";
 }
 
-export const TypographyMain = styled.text<TypographyProps>`
+export const TypographyMain = styled.span<TypographyProps>`
   color: ${({ color }) => text[color]};
   text-align: ${({ align }) => align};
 `;
