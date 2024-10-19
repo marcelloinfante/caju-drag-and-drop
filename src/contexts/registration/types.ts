@@ -17,7 +17,9 @@ export type ActionMapType<M extends { [index: string]: any }> = {
 
 export type RegistrationStateType = {
   loading: boolean;
-  registrations: RegistrationRead[];
+  reviewRegistrations: RegistrationRead[];
+  approvedRegistrations: RegistrationRead[];
+  reprovedRegistrations: RegistrationRead[];
 };
 
 export type RegistrationContextType = {
@@ -25,7 +27,14 @@ export type RegistrationContextType = {
   readRegistrations: (cpf?: string) => Promise<void>;
   createRegistration: (registration: RegistrationCreate) => Promise<void>;
   updateRegistration: (registration: RegistrationUpdate) => Promise<void>;
+  updateRegistrations: (
+    reviewRegistrations: RegistrationRead[],
+    approvedRegistrations: RegistrationRead[],
+    reprovedRegistrations: RegistrationRead[]
+  ) => Promise<void>;
   deleteRegistration: (id: string) => Promise<void>;
   loading: boolean;
-  registrations: RegistrationRead[];
+  reviewRegistrations: RegistrationRead[];
+  approvedRegistrations: RegistrationRead[];
+  reprovedRegistrations: RegistrationRead[];
 };

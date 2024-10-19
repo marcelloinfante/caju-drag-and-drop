@@ -9,29 +9,38 @@ import {
   RegistrationRead,
   RegistrationCreate,
   RegistrationUpdate,
+  StatusEnum,
 } from "~/types";
 
 enum Types {
   RESET_REGISTRATION = "RESET_REGISTRATION",
   READ_REGISTRATIONS = "READ_REGISTRATIONS",
   CREATE_REGISTRATION = "CREATE_REGISTRATION",
-  UPDATE_REGISTRATION = "UPDATE_REGISTRATION",
+  UPDATE_REGISTRATIONS = "UPDATE_REGISTRATIONS",
   DELETE_REGISTRATION = "DELETE_REGISTRATION",
 }
 
 type Payload = {
   [Types.RESET_REGISTRATION]: {};
   [Types.READ_REGISTRATIONS]: {
-    registrations: RegistrationRead[];
+    reviewRegistrations: RegistrationRead[];
+    approvedRegistrations: RegistrationRead[];
+    reprovedRegistrations: RegistrationRead[];
   };
   [Types.CREATE_REGISTRATION]: {
-    registration: RegistrationRead;
+    reviewRegistrations: RegistrationRead[];
+    approvedRegistrations: RegistrationRead[];
+    reprovedRegistrations: RegistrationRead[];
   };
-  [Types.UPDATE_REGISTRATION]: {
-    registration: RegistrationRead;
+  [Types.UPDATE_REGISTRATIONS]: {
+    reviewRegistrations: RegistrationRead[];
+    approvedRegistrations: RegistrationRead[];
+    reprovedRegistrations: RegistrationRead[];
   };
   [Types.DELETE_REGISTRATION]: {
-    registration: RegistrationRead;
+    reviewRegistrations: RegistrationRead[];
+    approvedRegistrations: RegistrationRead[];
+    reprovedRegistrations: RegistrationRead[];
   };
 };
 
@@ -39,7 +48,9 @@ type ActionsType = ActionMapType<Payload>[keyof ActionMapType<Payload>];
 
 const initialState: RegistrationStateType = {
   loading: true,
-  registrations: [],
+  reviewRegistrations: [],
+  approvedRegistrations: [],
+  reprovedRegistrations: [],
 };
 
 const reducer = (state: RegistrationStateType, action: ActionsType) => {
@@ -51,35 +62,36 @@ const reducer = (state: RegistrationStateType, action: ActionsType) => {
     return {
       ...state,
       loading: false,
-      registrations: action.payload.registrations,
+      reviewRegistrations: action.payload.reviewRegistrations,
+      approvedRegistrations: action.payload.approvedRegistrations,
+      reprovedRegistrations: action.payload.reprovedRegistrations,
     };
   }
 
   if (action.type === Types.CREATE_REGISTRATION) {
     return {
       ...state,
-      registrations: [...state.registrations, action.payload.registration],
+      reviewRegistrations: action.payload.reviewRegistrations,
+      approvedRegistrations: action.payload.approvedRegistrations,
+      reprovedRegistrations: action.payload.reprovedRegistrations,
     };
   }
 
-  if (action.type === Types.UPDATE_REGISTRATION) {
-    const registration = state.registrations.find(
-      (registration) => registration.id === action.payload.registration.id
-    );
-
-    if (registration) {
-      registration.status = action.payload.registration.status;
-    }
-
-    return state;
+  if (action.type === Types.UPDATE_REGISTRATIONS) {
+    return {
+      ...state,
+      reviewRegistrations: action.payload.reviewRegistrations,
+      approvedRegistrations: action.payload.approvedRegistrations,
+      reprovedRegistrations: action.payload.reprovedRegistrations,
+    };
   }
 
   if (action.type === Types.DELETE_REGISTRATION) {
     return {
       ...state,
-      registrations: state.registrations.filter(
-        (registration) => registration.id !== action.payload.registration.id
-      ),
+      reviewRegistrations: action.payload.reviewRegistrations,
+      approvedRegistrations: action.payload.approvedRegistrations,
+      reprovedRegistrations: action.payload.reprovedRegistrations,
     };
   }
 
@@ -102,55 +114,129 @@ export function RegistrationProvider({ children }: Props) {
 
   const readRegistrations = useCallback(async (cpf?: string) => {
     const { data: registrations } = await axios.get<RegistrationRead[]>(
-      endpoints.registration.cpf(cpf)
+      endpoints.registrations.cpf(cpf)
     );
+
+    let reviewRegistrations: RegistrationRead[] = [];
+    let approvedRegistrations: RegistrationRead[] = [];
+    let reprovedRegistrations: RegistrationRead[] = [];
+
+    registrations.forEach((registration) => {
+      if (registration.status === StatusEnum.REVIEW) {
+        reviewRegistrations.push(registration);
+      }
+
+      if (registration.status === StatusEnum.APPROVED) {
+        approvedRegistrations.push(registration);
+      }
+
+      if (registration.status === StatusEnum.REPROVED) {
+        reprovedRegistrations.push(registration);
+      }
+    });
 
     dispatch({
       type: Types.READ_REGISTRATIONS,
-      payload: { registrations },
+      payload: {
+        reviewRegistrations,
+        approvedRegistrations,
+        reprovedRegistrations,
+      },
     });
   }, []);
 
   const createRegistration = useCallback(
     async (registrationData: RegistrationCreate) => {
       const { data: registration } = await axios.post<RegistrationRead>(
-        endpoints.registration.root,
+        endpoints.registrations.root,
         registrationData
       );
 
+      if (registration.status === StatusEnum.REVIEW) {
+        state.reviewRegistrations.push(registration);
+      }
+
+      if (registration.status === StatusEnum.APPROVED) {
+        state.approvedRegistrations.push(registration);
+      }
+
+      if (registration.status === StatusEnum.REPROVED) {
+        state.reprovedRegistrations.push(registration);
+      }
+
       dispatch({
         type: Types.CREATE_REGISTRATION,
-        payload: { registration },
+        payload: {
+          reviewRegistrations: state.reviewRegistrations,
+          approvedRegistrations: state.approvedRegistrations,
+          reprovedRegistrations: state.reprovedRegistrations,
+        },
       });
     },
-    []
+    [state]
   );
 
   const updateRegistration = useCallback(
-    async ({ id, status }: RegistrationUpdate) => {
-      const { data: registration } = await axios.put<RegistrationRead>(
-        endpoints.registration.item(id),
-        { status }
+    async (registrationData: RegistrationUpdate) => {
+      await axios.put<RegistrationRead>(
+        endpoints.registrations.item(registrationData.id),
+        registrationData
       );
-
-      dispatch({
-        type: Types.UPDATE_REGISTRATION,
-        payload: { registration },
-      });
     },
     []
   );
 
-  const deleteRegistration = useCallback(async (id: string) => {
-    const { data: registration } = await axios.delete(
-      endpoints.registration.item(id)
-    );
+  const updateRegistrations = useCallback(
+    async (
+      reviewRegistrations: RegistrationRead[],
+      approvedRegistrations: RegistrationRead[],
+      reprovedRegistrations: RegistrationRead[]
+    ) => {
+      dispatch({
+        type: Types.UPDATE_REGISTRATIONS,
+        payload: {
+          reviewRegistrations,
+          approvedRegistrations,
+          reprovedRegistrations,
+        },
+      });
+    },
+    [state]
+  );
 
-    dispatch({
-      type: Types.DELETE_REGISTRATION,
-      payload: { registration },
-    });
-  }, []);
+  const deleteRegistration = useCallback(
+    async (id: string) => {
+      const { data: registration } = await axios.delete(
+        endpoints.registrations.item(id)
+      );
+
+      if (registration.status === StatusEnum.REVIEW) {
+        state.reviewRegistrations.filter((item) => item.id !== registration.id);
+      }
+
+      if (registration.status === StatusEnum.APPROVED) {
+        state.approvedRegistrations.filter(
+          (item) => item.id !== registration.id
+        );
+      }
+
+      if (registration.status === StatusEnum.REPROVED) {
+        state.reprovedRegistrations.filter(
+          (item) => item.id !== registration.id
+        );
+      }
+
+      dispatch({
+        type: Types.DELETE_REGISTRATION,
+        payload: {
+          reviewRegistrations: state.reviewRegistrations,
+          approvedRegistrations: state.approvedRegistrations,
+          reprovedRegistrations: state.reprovedRegistrations,
+        },
+      });
+    },
+    [state]
+  );
 
   const memoizedValue = useMemo(
     () => ({
@@ -158,18 +244,24 @@ export function RegistrationProvider({ children }: Props) {
       readRegistrations,
       createRegistration,
       updateRegistration,
+      updateRegistrations,
       deleteRegistration,
       loading: state.loading,
-      registrations: state.registrations,
+      reviewRegistrations: state.reviewRegistrations,
+      approvedRegistrations: state.approvedRegistrations,
+      reprovedRegistrations: state.reprovedRegistrations,
     }),
     [
       resetRegistration,
       readRegistrations,
       createRegistration,
       updateRegistration,
+      updateRegistrations,
       deleteRegistration,
       state.loading,
-      state.registrations,
+      state.reviewRegistrations,
+      state.approvedRegistrations,
+      state.reprovedRegistrations,
     ]
   );
 
