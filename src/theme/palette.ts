@@ -84,6 +84,33 @@ export const text = {
   textDisabled: grey[500],
 };
 
+export const button = {
+  primary: {
+    textColor: primary.main,
+    backgroundColor: primary.light,
+  },
+  secondary: {
+    textColor: secondary.main,
+    backgroundColor: secondary.light,
+  },
+  success: {
+    textColor: success.main,
+    backgroundColor: success.light,
+  },
+  error: {
+    textColor: error.main,
+    backgroundColor: error.light,
+  },
+  info: {
+    textColor: info.main,
+    backgroundColor: info.light,
+  },
+  warning: {
+    textColor: warning.main,
+    backgroundColor: warning.light,
+  },
+};
+
 export const background = {
   paper: "#FFFFFF",
   default: "#FFFFFF",
