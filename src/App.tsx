@@ -1,14 +1,19 @@
 import Router from "~/router";
 import { Header } from "./components/Header";
 
+import { SnackbarProvider } from "~/components/Snackbar";
+import { RegistrationProvider } from "~/contexts/registration";
+
 function App() {
   return (
-    <>
-      <Header>
-        <h1>Caju Front Teste</h1>
-      </Header>
-      <Router />
-    </>
+    <SnackbarProvider>
+      <RegistrationProvider>
+        <Header>
+          <h1>Caju Front Teste</h1>
+        </Header>
+        <Router />
+      </RegistrationProvider>
+    </SnackbarProvider>
   );
 }
 
