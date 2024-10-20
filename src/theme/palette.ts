@@ -1,5 +1,7 @@
 import { alpha } from "@mui/material/styles";
 
+import { StatusEnum } from "~/types";
+
 export const grey = {
   0: "#FFFFFF",
   100: "#F9FAFB",
@@ -84,6 +86,22 @@ export const text = {
   textDisabled: grey[500],
 };
 
+export const background = {
+  paper: "#FFFFFF",
+  default: "#FFFFFF",
+  neutral: grey[200],
+};
+
+export const action = {
+  hover: alpha(grey[500], 0.08),
+  selected: alpha(grey[500], 0.16),
+  disabled: alpha(grey[500], 0.8),
+  disabledBackground: alpha(grey[500], 0.24),
+  focus: alpha(grey[500], 0.24),
+  hoverOpacity: 0.08,
+  disabledOpacity: 0.48,
+};
+
 export const button = {
   primary: {
     textColor: primary.main,
@@ -111,18 +129,17 @@ export const button = {
   },
 };
 
-export const background = {
-  paper: "#FFFFFF",
-  default: "#FFFFFF",
-  neutral: grey[200],
-};
-
-export const action = {
-  hover: alpha(grey[500], 0.08),
-  selected: alpha(grey[500], 0.16),
-  disabled: alpha(grey[500], 0.8),
-  disabledBackground: alpha(grey[500], 0.24),
-  focus: alpha(grey[500], 0.24),
-  hoverOpacity: 0.08,
-  disabledOpacity: 0.48,
+export const registrationColumns = {
+  [StatusEnum.REVIEW]: {
+    color: "#EFC24D",
+    backgroundColor: "#FDF8E9",
+  },
+  [StatusEnum.APPROVED]: {
+    color: "#4242DF",
+    backgroundColor: "#EEEEFD",
+  },
+  [StatusEnum.REPROVED]: {
+    color: "#CE2893",
+    backgroundColor: "#FBEDF6",
+  },
 };
