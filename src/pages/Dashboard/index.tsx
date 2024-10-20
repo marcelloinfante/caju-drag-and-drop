@@ -1,10 +1,12 @@
 import { useEffect } from "react";
 
-import Collumns from "../../sections/Columns";
-import { SearchBar } from "../../sections/Searchbar";
-import Container from "~/components/Container";
-
 import { useRegistrationContext } from "~/contexts/registration/hook";
+
+import Collumns from "~/sections/Columns";
+import { SearchBar } from "~/sections/Searchbar";
+
+import Container from "~/components/Container";
+import Loading from "~/sections/Loading";
 
 const DashboardPage = () => {
   const { loading, readRegistrations } = useRegistrationContext();
@@ -14,7 +16,7 @@ const DashboardPage = () => {
   }, []);
 
   if (loading) {
-    <>Carregando...</>;
+    return <Loading />;
   }
 
   return (
