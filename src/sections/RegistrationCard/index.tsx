@@ -36,7 +36,7 @@ const RegistrationCard = ({ registration }: RegistrationCardProps) => {
           <S.TextAndDeletion>
             <S.IconAndText>
               <HiOutlineUser />
-              <Typography variant="h4">{registration.employeeName}</Typography>
+              <Typography variant="h4">{registration.name}</Typography>
             </S.IconAndText>
             <HiOutlineTrash
               style={{ cursor: "pointer" }}
@@ -53,7 +53,7 @@ const RegistrationCard = ({ registration }: RegistrationCardProps) => {
           </S.IconAndText>
           <S.IconAndText>
             <HiOutlineCalendar />
-            <Typography>{registration.admissionDate}</Typography>
+            <Typography>{registration.date}</Typography>
           </S.IconAndText>
         </RegistrationCardMain>
       )}

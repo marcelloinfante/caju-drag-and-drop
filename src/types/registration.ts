@@ -6,9 +6,9 @@ export enum StatusEnum {
 
 interface RegistrationBase {
   cpf: string;
+  name: string;
+  date: string;
   email: string;
-  employeeName: string;
-  admissionDate: string;
 }
 
 export interface RegistrationRead extends RegistrationBase {
