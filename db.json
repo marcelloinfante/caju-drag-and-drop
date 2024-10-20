@@ -1,28 +1,68 @@
 {
   "registrations": [
     {
-      "admissionDate": "22/10/2023",
-      "email": "luiz@caju.com.br",
-      "employeeName": "Luiz Filho",
-      "status": "APROVED",
-      "cpf": "56642105087",
-      "id": "3"
-    },
-    {
       "id": "1",
-      "admissionDate": "22/10/2023",
-      "email": "filipe@caju.com.br",
-      "employeeName": "Filipe Marins",
-      "status": "REVIEW",
-      "cpf": "78502270001"
+      "cpf": "78502270001",
+      "status": "REPROVED",
+      "email": "jose@caju.com.br",
+      "employeeName": "José Leão",
+      "admissionDate": "22/10/2023"
     },
     {
       "id": "2",
-      "admissionDate": "22/10/2023",
-      "email": "jose@caju.com.br",
-      "employeeName": "José Leão",
+      "cpf": "56642105087",
+      "status": "REVIEW",
+      "email": "luiz@caju.com.br",
+      "employeeName": "Luiz Filho",
+      "admissionDate": "23/10/2023"
+    },
+    {
+      "id": "3",
+      "cpf": "12345678901",
       "status": "REPROVED",
-      "cpf": "78502270001"
+      "email": "ana@caju.com.br",
+      "employeeName": "Ana Silva",
+      "admissionDate": "24/10/2023"
+    },
+    {
+      "id": "4",
+      "cpf": "98765432109",
+      "status": "APPROVED",
+      "email": "carlos@caju.com.br",
+      "employeeName": "Carlos Santos",
+      "admissionDate": "25/10/2023"
+    },
+    {
+      "id": "5",
+      "cpf": "45678912307",
+      "status": "REPROVED",
+      "email": "maria@caju.com.br",
+      "employeeName": "Maria Oliveira",
+      "admissionDate": "26/10/2023"
+    },
+    {
+      "id": "6",
+      "cpf": "34567890123",
+      "status": "REVIEW",
+      "email": "joao@caju.com.br",
+      "employeeName": "João Pereira",
+      "admissionDate": "27/10/2023"
+    },
+    {
+      "id": "7",
+      "cpf": "23456789012",
+      "status": "APPROVED",
+      "email": "beatriz@caju.com.br",
+      "employeeName": "Beatriz Costa",
+      "admissionDate": "28/10/2023"
+    },
+    {
+      "id": "8",
+      "cpf": "87654321098",
+      "status": "APPROVED",
+      "email": "pedro@caju.com.br",
+      "employeeName": "Pedro Almeida",
+      "admissionDate": "29/10/2023"
     }
   ]
 }
