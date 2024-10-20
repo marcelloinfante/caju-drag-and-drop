@@ -3,7 +3,7 @@ import { InputHTMLAttributes } from "react";
 import { Input, TextFieldMain } from "./styles";
 import Typography from "../Typography";
 
-interface TextFieldProps extends InputHTMLAttributes<any> {
+export interface TextFieldProps extends InputHTMLAttributes<any> {
   label?: string;
   error?: string;
   style?: React.CSSProperties;

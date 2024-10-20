@@ -17,9 +17,10 @@ const Button = ({
   style,
   size = "medium",
   color = "primary",
+  ...props
 }: ButtonProps) => {
   return (
-    <ButtonMain style={{ ...button[color], ...style }}>
+    <ButtonMain type="submit" style={{ ...button[color], ...style }} {...props}>
       <Typography>{children}</Typography>
     </ButtonMain>
   );
