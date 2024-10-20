@@ -1,30 +1,35 @@
 import { Droppable } from "react-beautiful-dnd";
 
-import * as S from "./styles";
-import RegistrationCard from "../RegistrationCard";
-
+import { registrationColumns } from "~/theme/palette";
 import { RegistrationRead, StatusEnum } from "~/types";
+
+import Typography from "~/components/Typography";
+import RegistrationCard from "~/sections/RegistrationCard";
+
+import * as S from "./styles";
 
 type ColumnProps = {
   title: string;
   status: StatusEnum;
   registrations: RegistrationRead[];
 };
+
 const Collumn = ({ title, status, registrations }: ColumnProps) => {
+  const { color, backgroundColor } = registrationColumns[status];
+
+  console.log(registrations);
+
   return (
-    <S.Column status={status}>
-      <S.TitleColumn status={status}>{title}</S.TitleColumn>
+    <S.Column style={{ backgroundColor }}>
+      <Typography variant="h3" color={color}>
+        {title}
+      </Typography>
       <Droppable droppableId={status}>
         {(provided) => (
-          <S.CollumContent
-            key={title}
-            ref={provided.innerRef}
-            {...provided.droppableProps}
-          >
-            {registrations.map((registration, index) => {
+          <S.CollumContent ref={provided.innerRef} {...provided.droppableProps}>
+            {registrations.map((registration) => {
               return (
                 <RegistrationCard
-                  index={index}
                   key={registration.id}
                   registration={registration}
                 />
