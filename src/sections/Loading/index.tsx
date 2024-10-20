@@ -1,7 +1,11 @@
-import { LoaderComponent } from "./styles";
+import { LoaderBackground, LoaderComponent } from "./styles";
 
 const Loading = () => {
-  return <LoaderComponent />;
+  return (
+    <LoaderBackground>
+      <LoaderComponent />;
+    </LoaderBackground>
+  );
 };
 
 export default Loading;

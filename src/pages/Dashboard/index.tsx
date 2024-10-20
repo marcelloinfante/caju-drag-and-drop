@@ -15,14 +15,11 @@ const DashboardPage = () => {
     readRegistrations();
   }, []);
 
-  if (loading) {
-    return <Loading />;
-  }
-
   return (
     <Container>
       <SearchBar />
       <Collumns />
+      {loading && <Loading />}
     </Container>
   );
 };

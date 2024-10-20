@@ -1,5 +1,15 @@
 import styled from "styled-components";
 
+export const LoaderBackground = styled.div`
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: white;
+  transform: translate(-50%, -50%);
+`;
+
 export const LoaderComponent = styled.div`
   position: absolute;
   top: 50%;
