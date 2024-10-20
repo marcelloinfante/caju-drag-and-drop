@@ -13,8 +13,8 @@ export default function SnackbarProvider({ children }: Props) {
       ref={notistackRef}
       maxSnack={5}
       preventDuplicate
-      autoHideDuration={3000}
       variant="success"
+      autoHideDuration={3000}
       anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
     >
       {children}
