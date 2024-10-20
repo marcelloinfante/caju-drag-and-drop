@@ -6,6 +6,7 @@ interface StackProps extends HTMLAttributes<HTMLDivElement> {
   children?: ReactNode;
   style?: React.CSSProperties;
   direction?: "column-reverse" | "column" | "row-reverse" | "row";
+  innerRef?: (element: HTMLElement | null) => void;
 }
 
 const Stack = ({
@@ -13,10 +14,17 @@ const Stack = ({
   spacing,
   children,
   direction = "column",
+  innerRef,
   ...props
 }: StackProps) => {
   return (
-    <StackMain style={style} spacing={spacing} direction={direction} {...props}>
+    <StackMain
+      style={style}
+      ref={innerRef}
+      spacing={spacing}
+      direction={direction}
+      {...props}
+    >
       {children}
     </StackMain>
   );
