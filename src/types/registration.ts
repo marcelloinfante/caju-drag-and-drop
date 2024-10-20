@@ -13,6 +13,7 @@ interface RegistrationBase {
 
 export interface RegistrationRead extends RegistrationBase {
   id: string;
+  index: number;
   status: StatusEnum;
 }
 

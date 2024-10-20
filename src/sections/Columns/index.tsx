@@ -1,20 +1,23 @@
 import { DragDropContext, DropResult } from "react-beautiful-dnd";
 
-import Collumn from "../Column";
-
-import { StatusEnum } from "~/types";
 import { useRegistrationContext } from "~/contexts/registration/hook";
 
+import Collumn from "~/sections/Column";
+
 import Stack from "~/components/Stack";
+import { useSnackbar } from "~/components/Snackbar";
+
+import { StatusEnum } from "~/types";
 
 const Collumns = () => {
   const {
     reviewRegistrations,
     approvedRegistrations,
     reprovedRegistrations,
-    updateRegistration,
     updateRegistrations,
   } = useRegistrationContext();
+
+  // const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const onDragEnd = ({ destination, source }: DropResult) => {
     if (!destination) {
@@ -46,9 +49,15 @@ const Collumns = () => {
     const [draggedItem] = sourceRegistrations.splice(source.index, 1);
     destinationRegistrations.splice(destination.index, 0, draggedItem);
 
-    draggedItem.status = destinationStatus;
+    sourceRegistrations.forEach((registration, index) => {
+      registration.index = index;
+      registration.status = sourceStatus;
+    });
 
-    updateRegistration(draggedItem);
+    destinationRegistrations.forEach((registration, index) => {
+      registration.index = index;
+      registration.status = destinationStatus;
+    });
 
     updateRegistrations(
       registrations[StatusEnum.REVIEW],

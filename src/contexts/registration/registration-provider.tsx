@@ -13,6 +13,7 @@ import {
 } from "~/types";
 
 enum Types {
+  RESET_LOADING = "RESET_LOADING",
   RESET_REGISTRATION = "RESET_REGISTRATION",
   READ_REGISTRATIONS = "READ_REGISTRATIONS",
   CREATE_REGISTRATION = "CREATE_REGISTRATION",
@@ -21,6 +22,7 @@ enum Types {
 }
 
 type Payload = {
+  [Types.RESET_LOADING]: {};
   [Types.RESET_REGISTRATION]: {};
   [Types.READ_REGISTRATIONS]: {
     reviewRegistrations: RegistrationRead[];
@@ -54,6 +56,13 @@ const initialState: RegistrationStateType = {
 };
 
 const reducer = (state: RegistrationStateType, action: ActionsType) => {
+  if (action.type === Types.RESET_LOADING) {
+    return {
+      ...state,
+      loading: true,
+    };
+  }
+
   if (action.type === Types.RESET_REGISTRATION) {
     return initialState;
   }
@@ -71,6 +80,7 @@ const reducer = (state: RegistrationStateType, action: ActionsType) => {
   if (action.type === Types.CREATE_REGISTRATION) {
     return {
       ...state,
+      loading: false,
       reviewRegistrations: action.payload.reviewRegistrations,
       approvedRegistrations: action.payload.approvedRegistrations,
       reprovedRegistrations: action.payload.reprovedRegistrations,
@@ -80,6 +90,7 @@ const reducer = (state: RegistrationStateType, action: ActionsType) => {
   if (action.type === Types.UPDATE_REGISTRATIONS) {
     return {
       ...state,
+      loading: false,
       reviewRegistrations: action.payload.reviewRegistrations,
       approvedRegistrations: action.payload.approvedRegistrations,
       reprovedRegistrations: action.payload.reprovedRegistrations,
@@ -89,6 +100,7 @@ const reducer = (state: RegistrationStateType, action: ActionsType) => {
   if (action.type === Types.DELETE_REGISTRATION) {
     return {
       ...state,
+      loading: false,
       reviewRegistrations: action.payload.reviewRegistrations,
       approvedRegistrations: action.payload.approvedRegistrations,
       reprovedRegistrations: action.payload.reprovedRegistrations,
@@ -113,9 +125,18 @@ export function RegistrationProvider({ children }: Props) {
   }, []);
 
   const readRegistrations = useCallback(async (cpf?: string) => {
+    dispatch({
+      type: Types.RESET_LOADING,
+      payload: {},
+    });
+
     const { data: registrations } = await axios.get<RegistrationRead[]>(
       endpoints.registrations.cpf(cpf)
     );
+
+    // // TODO: remove timeout
+    // await new Promise((r) => setTimeout(r, 1000));
+    // //
 
     let reviewRegistrations: RegistrationRead[] = [];
     let approvedRegistrations: RegistrationRead[] = [];
@@ -123,15 +144,15 @@ export function RegistrationProvider({ children }: Props) {
 
     registrations.forEach((registration) => {
       if (registration.status === StatusEnum.REVIEW) {
-        reviewRegistrations.push(registration);
+        reviewRegistrations[registration.index] = registration;
       }
 
       if (registration.status === StatusEnum.APPROVED) {
-        approvedRegistrations.push(registration);
+        approvedRegistrations[registration.index] = registration;
       }
 
       if (registration.status === StatusEnum.REPROVED) {
-        reprovedRegistrations.push(registration);
+        reprovedRegistrations[registration.index] = registration;
       }
     });
 
@@ -147,10 +168,19 @@ export function RegistrationProvider({ children }: Props) {
 
   const createRegistration = useCallback(
     async (registrationData: RegistrationCreate) => {
+      dispatch({
+        type: Types.RESET_LOADING,
+        payload: {},
+      });
+
       const { data: registration } = await axios.post<RegistrationRead>(
         endpoints.registrations.root,
         registrationData
       );
+
+      // // TODO: remove timeout
+      // await new Promise((r) => setTimeout(r, 1000));
+      // //
 
       if (registration.status === StatusEnum.REVIEW) {
         state.reviewRegistrations.push(registration);
@@ -192,6 +222,19 @@ export function RegistrationProvider({ children }: Props) {
       approvedRegistrations: RegistrationRead[],
       reprovedRegistrations: RegistrationRead[]
     ) => {
+      const registrations = [
+        ...reviewRegistrations,
+        ...approvedRegistrations,
+        ...reprovedRegistrations,
+      ];
+
+      registrations.forEach(async (registration) => {
+        await axios.put<RegistrationRead>(
+          endpoints.registrations.item(registration.id),
+          registration
+        );
+      });
+
       dispatch({
         type: Types.UPDATE_REGISTRATIONS,
         payload: {
@@ -206,22 +249,24 @@ export function RegistrationProvider({ children }: Props) {
 
   const deleteRegistration = useCallback(
     async (id: string) => {
-      const { data: registration } = await axios.delete(
+      const { data: registration } = await axios.delete<RegistrationRead>(
         endpoints.registrations.item(id)
       );
 
       if (registration.status === StatusEnum.REVIEW) {
-        state.reviewRegistrations.filter((item) => item.id !== registration.id);
+        state.reviewRegistrations = state.reviewRegistrations.filter(
+          (item) => item.id !== registration.id
+        );
       }
 
       if (registration.status === StatusEnum.APPROVED) {
-        state.approvedRegistrations.filter(
+        state.approvedRegistrations = state.approvedRegistrations.filter(
           (item) => item.id !== registration.id
         );
       }
 
       if (registration.status === StatusEnum.REPROVED) {
-        state.reprovedRegistrations.filter(
+        state.reprovedRegistrations = state.reprovedRegistrations.filter(
           (item) => item.id !== registration.id
         );
       }
