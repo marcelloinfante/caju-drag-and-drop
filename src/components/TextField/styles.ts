@@ -1,18 +1,19 @@
 import styled from "styled-components";
 
-export const Input = styled.input`
-  padding: 0 8px;
-  vertical-align: middle;
-  border-radius: 2px;
+export const TextFieldMain = styled.div`
   width: 100%;
+`;
+
+export const Input = styled.input`
+  width: 100%;
+  padding: 0 8px;
+  font-size: 16px;
   min-height: 36px;
+  line-height: 18px;
+  border-radius: 8px;
+  vertical-align: middle;
   background-color: #ffffff;
   border: 1px solid rgba(36, 28, 21, 0.3);
-  transition: all 0.2s ease-in-out 0s;
-  font-size: 16px;
-  line-height: 18px;
-  font-weight: normal;
-  border-radius: 8px;
 
   :focus {
     outline: none;
