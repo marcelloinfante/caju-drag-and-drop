@@ -13,10 +13,12 @@ interface TypographyProps {
     | "warning"
     | "textPrimary"
     | "textSecondary"
-    | "textDisabled";
+    | "textDisabled"
+    | string;
 }
 
 export const TypographyMain = styled.span<TypographyProps>`
-  color: ${({ color }) => text[color]};
+  color: ${({ color }) => text[color] || color};
   text-align: ${({ align }) => align};
+  margin: 0;
 `;

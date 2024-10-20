@@ -1,11 +1,11 @@
-import { ReactNode } from "react";
-import { TypographyMain } from "./styles";
+import { ReactNode, HTMLAttributes } from "react";
 
 import { typography } from "~/theme/typography";
 
-interface TypographyProps {
+import { TypographyMain } from "./styles";
+
+interface TypographyProps extends HTMLAttributes<HTMLSpanElement> {
   children?: ReactNode;
-  style?: React.CSSProperties;
   align?: "center" | "inherit" | "justify" | "left" | "right";
   color?:
     | "primary"
@@ -16,7 +16,8 @@ interface TypographyProps {
     | "warning"
     | "textPrimary"
     | "textSecondary"
-    | "textDisabled";
+    | "textDisabled"
+    | string;
   variant?:
     | "body1"
     | "body2"
@@ -37,12 +38,14 @@ const Typography = ({
   variant = "body1",
   align = "inherit",
   color = "textPrimary",
+  ...props
 }: TypographyProps) => {
   return (
     <TypographyMain
       align={align}
       color={color}
       style={{ ...typography[variant], ...style }}
+      {...props}
     >
       {children}
     </TypographyMain>
