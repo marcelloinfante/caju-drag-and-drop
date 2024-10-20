@@ -17,8 +17,6 @@ type ColumnProps = {
 const Collumn = ({ title, status, registrations }: ColumnProps) => {
   const { color, backgroundColor } = registrationColumns[status];
 
-  console.log(registrations);
-
   return (
     <S.Column style={{ backgroundColor }}>
       <Typography variant="h3" color={color}>
