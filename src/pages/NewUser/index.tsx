@@ -8,6 +8,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useRegistrationContext } from "~/contexts/registration/hook";
 
 import routes from "~/router/routes";
+import { fDate } from "~/utils/formatDate";
+import { maskCpf, unmaskCpf } from "~/utils/cpfMask";
 
 import Card from "~/components/Card";
 import Stack from "~/components/Stack";
@@ -29,8 +31,18 @@ const NewUserPage = () => {
 
   const CreateRegistrationSchema: Yup.ObjectSchema<RegistrationCreate> =
     Yup.object().shape({
-      cpf: Yup.string().required("Campo obrigatório"),
-      name: Yup.string().required("Campo obrigatório"),
+      cpf: Yup.string()
+        .required("Campo obrigatório")
+        .min(14, "Digite um CPF válido"),
+      name: Yup.string()
+        .required("Campo obrigatório")
+        .matches(/^[a-zA-Z]/, "A primeira letra não pode ser um número")
+        .min(3, "Deve ter pelo menos 3 caracteres")
+        .matches(
+          /^[a-zA-Z].*[a-zA-Z].*[a-zA-Z]/,
+          "Deve ter no mínimo duas letras"
+        )
+        .matches(/^[a-zA-Z].* .*[a-zA-Z]/, "Deve conter pelo menos um espaço"),
       date: Yup.string().required("Campo obrigatório"),
       email: Yup.string()
         .required("Campo obrigatório")
@@ -51,7 +63,13 @@ const NewUserPage = () => {
 
   const { handleSubmit } = methods;
 
-  const onSubmit = handleSubmit((registration) => {
+  const onSubmit = handleSubmit(({ cpf, date, ...other }) => {
+    const registration = {
+      ...other,
+      date: fDate(date),
+      cpf: unmaskCpf(cpf),
+    };
+
     createRegistration(registration);
     goToHome();
   });
@@ -66,7 +84,12 @@ const NewUserPage = () => {
             </IconButton>
             <RHFTextField name="name" label="Nome" placeholder="Nome" />
             <RHFTextField name="email" label="Email" placeholder="Email" />
-            <RHFTextField name="cpf" label="CPF" placeholder="CPF" />
+            <RHFTextField
+              name="cpf"
+              label="CPF"
+              mask={maskCpf}
+              placeholder="CPF"
+            />
             <RHFTextField name="date" label="Data de admissão" type="date" />
             <Button>Cadastrar</Button>
           </Stack>

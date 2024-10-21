@@ -5,12 +5,7 @@ import axios, { endpoints } from "~/utils/axios";
 import { RegistrationContext } from "./registration-context";
 import { ActionMapType, RegistrationStateType } from "./types";
 
-import {
-  RegistrationRead,
-  RegistrationCreate,
-  RegistrationUpdate,
-  StatusEnum,
-} from "~/types";
+import { RegistrationRead, RegistrationCreate, StatusEnum } from "~/types";
 
 enum Types {
   RESET_LOADING = "RESET_LOADING",
@@ -31,8 +26,6 @@ type Payload = {
   };
   [Types.CREATE_REGISTRATION]: {
     reviewRegistrations: RegistrationRead[];
-    approvedRegistrations: RegistrationRead[];
-    reprovedRegistrations: RegistrationRead[];
   };
   [Types.UPDATE_REGISTRATIONS]: {
     reviewRegistrations: RegistrationRead[];
@@ -82,8 +75,6 @@ const reducer = (state: RegistrationStateType, action: ActionsType) => {
       ...state,
       loading: false,
       reviewRegistrations: action.payload.reviewRegistrations,
-      approvedRegistrations: action.payload.approvedRegistrations,
-      reprovedRegistrations: action.payload.reprovedRegistrations,
     };
   }
 
@@ -175,47 +166,30 @@ export function RegistrationProvider({ children }: Props) {
 
       const { data: registration } = await axios.post<RegistrationRead>(
         endpoints.registrations.root,
-        registrationData
+        {
+          ...registrationData,
+          status: StatusEnum.REVIEW,
+          index: state.reviewRegistrations.length,
+        }
       );
 
       // // TODO: remove timeout
       // await new Promise((r) => setTimeout(r, 1000));
       // //
 
-      if (registration.status === StatusEnum.REVIEW) {
-        state.reviewRegistrations.push(registration);
-      }
-
-      if (registration.status === StatusEnum.APPROVED) {
-        state.approvedRegistrations.push(registration);
-      }
-
-      if (registration.status === StatusEnum.REPROVED) {
-        state.reprovedRegistrations.push(registration);
-      }
+      state.reviewRegistrations.push(registration);
 
       dispatch({
         type: Types.CREATE_REGISTRATION,
         payload: {
           reviewRegistrations: state.reviewRegistrations,
-          approvedRegistrations: state.approvedRegistrations,
-          reprovedRegistrations: state.reprovedRegistrations,
         },
       });
     },
     [state]
   );
 
-  const updateRegistration = useCallback(
-    async (registrationData: RegistrationUpdate) => {
-      await axios.put<RegistrationRead>(
-        endpoints.registrations.item(registrationData.id),
-        registrationData
-      );
-    },
-    []
-  );
-
+  // TODO: optimize updateRegistrations
   const updateRegistrations = useCallback(
     async (
       reviewRegistrations: RegistrationRead[],
@@ -288,7 +262,6 @@ export function RegistrationProvider({ children }: Props) {
       resetRegistration,
       readRegistrations,
       createRegistration,
-      updateRegistration,
       updateRegistrations,
       deleteRegistration,
       loading: state.loading,
@@ -300,7 +273,6 @@ export function RegistrationProvider({ children }: Props) {
       resetRegistration,
       readRegistrations,
       createRegistration,
-      updateRegistration,
       updateRegistrations,
       deleteRegistration,
       state.loading,

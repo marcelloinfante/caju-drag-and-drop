@@ -17,6 +17,4 @@ export interface RegistrationRead extends RegistrationBase {
   status: StatusEnum;
 }
 
-export interface RegistrationUpdate extends RegistrationRead {}
-
 export interface RegistrationCreate extends RegistrationBase {}

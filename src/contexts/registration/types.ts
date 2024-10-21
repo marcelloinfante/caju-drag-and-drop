@@ -1,8 +1,4 @@
-import {
-  RegistrationRead,
-  RegistrationCreate,
-  RegistrationUpdate,
-} from "src/types";
+import { RegistrationRead, RegistrationCreate } from "src/types";
 
 export type ActionMapType<M extends { [index: string]: any }> = {
   [Key in keyof M]: M[Key] extends undefined
@@ -26,7 +22,6 @@ export type RegistrationContextType = {
   resetRegistration: () => Promise<void>;
   readRegistrations: (cpf?: string) => Promise<void>;
   createRegistration: (registration: RegistrationCreate) => Promise<void>;
-  updateRegistration: (registration: RegistrationUpdate) => Promise<void>;
   updateRegistrations: (
     reviewRegistrations: RegistrationRead[],
     approvedRegistrations: RegistrationRead[],

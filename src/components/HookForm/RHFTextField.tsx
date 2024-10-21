@@ -14,14 +14,7 @@ const RHFTextField = ({ name, ...props }: RHFTextFieldProps) => {
       name={name}
       control={control}
       render={({ field, fieldState: { error } }) => (
-        <TextField
-          {...field}
-          error={error?.message}
-          onChange={(event) => {
-            field.onChange(event.target.value);
-          }}
-          {...props}
-        />
+        <TextField {...field} error={error?.message} {...props} />
       )}
     />
   );
