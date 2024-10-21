@@ -8,7 +8,7 @@ const Header = () => {
       <S.HeaderContainer>
         {/* TODO: h1 component */}
         <Typography variant="h2" color="white">
-          Caju Front Teste
+          Caju Drag-and-Drop
         </Typography>
       </S.HeaderContainer>
     </S.Header>
