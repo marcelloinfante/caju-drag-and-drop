@@ -60,7 +60,7 @@ const NewUserPage = () => {
     <FormProvider methods={methods} onSubmit={onSubmit}>
       <Container maxWidth="sm">
         <Card>
-          <Stack spacing="16px">
+          <Stack spacing="24px">
             <IconButton onClick={goToHome} aria-label="back">
               <HiOutlineArrowLeft size={24} />
             </IconButton>

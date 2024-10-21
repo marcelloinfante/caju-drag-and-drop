@@ -1,10 +1,12 @@
 import styled from "styled-components";
 
+import { error as errorPalette } from "~/theme/palette";
+
 export const TextFieldMain = styled.div`
   width: 100%;
 `;
 
-export const Input = styled.input`
+export const Input = styled.input<{ error?: boolean }>`
   width: 100%;
   padding: 0 8px;
   font-size: 16px;
@@ -13,11 +15,16 @@ export const Input = styled.input`
   border-radius: 8px;
   vertical-align: middle;
   background-color: #ffffff;
-  border: 1px solid rgba(36, 28, 21, 0.3);
+  border-width: 1px;
+  border-style: solid;
+  border-color: ${({ error }) =>
+    error ? errorPalette.main : "rgba(36, 28, 21, 0.3)"};
 
-  :focus {
+  &:focus {
     outline: none;
-    border: 1px solid #007c89;
-    box-shadow: inset 0 0 0 1px #007c89;
+    box-shadow: ${({ error }) =>
+      `inset 0 0 0 1px ${error ? errorPalette.main : "#007c89"}`};
+
+    border-color: ${({ error }) => (error ? errorPalette.main : "#007c89")};
   }
 `;
