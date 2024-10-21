@@ -1,4 +1,4 @@
-export const SIZE_TO_PIXELS = {
+export const sizes = {
   xs: "0px",
   sm: "600px",
   md: "900px",

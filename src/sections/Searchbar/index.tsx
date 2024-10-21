@@ -51,11 +51,10 @@ const SearchBar = () => {
 
   return (
     <S.Container>
-      <TextField
+      <S.CPFField
         value={cpf}
         error={error}
         onChange={handleOnChange}
-        style={{ width: "250px" }}
         placeholder="Digite um CPF válido"
       />
       <S.Actions>

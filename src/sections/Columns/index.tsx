@@ -3,9 +3,9 @@ import { DragDropContext, DropResult } from "react-beautiful-dnd";
 import { useRegistrationContext } from "~/contexts/registration";
 
 import Collumn from "~/sections/Column";
-
-import Stack from "~/components/Stack";
 import { useSnackbar } from "~/components/Snackbar";
+
+import * as S from "./styles";
 
 import { StatusEnum } from "~/types";
 
@@ -75,7 +75,7 @@ const Collumns = () => {
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <Stack direction="row" spacing="24px">
+      <S.Columns direction="row" spacing="24px">
         <Collumn
           title="Revisão"
           status={StatusEnum.REVIEW}
@@ -91,7 +91,7 @@ const Collumns = () => {
           status={StatusEnum.REPROVED}
           registrations={reprovedRegistrations}
         />
-      </Stack>
+      </S.Columns>
     </DragDropContext>
   );
 };

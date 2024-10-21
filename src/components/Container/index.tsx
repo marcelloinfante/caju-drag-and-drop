@@ -1,6 +1,6 @@
 import { ReactNode, HTMLAttributes } from "react";
 
-import { SIZE_TO_PIXELS } from "~/constants";
+import { sizes } from "~/theme/responsive";
 
 import * as S from "./styles";
 
@@ -14,7 +14,7 @@ const Container = ({ children, maxWidth = "lg", ...props }: ContainerProps) => {
   let sectionMaxWidth;
 
   if (maxWidth) {
-    sectionMaxWidth = SIZE_TO_PIXELS[maxWidth];
+    sectionMaxWidth = sizes[maxWidth];
   }
 
   return (
