@@ -77,7 +77,7 @@ const Collumns = () => {
     <DragDropContext onDragEnd={onDragEnd}>
       <Stack direction="row" spacing="24px">
         <Collumn
-          title="Pronto para revisar"
+          title="Revisão"
           status={StatusEnum.REVIEW}
           registrations={reviewRegistrations}
         />

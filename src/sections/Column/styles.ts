@@ -4,6 +4,7 @@ import Card from "~/components/Card";
 
 export const Column = styled(Card)`
   width: 100%;
+  min-width: 300px;
   padding: 16px;
   margin-top: 24px;
   max-height: 800px;

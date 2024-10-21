@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { primary } from "~/theme/palette";
+
 export const IconButton = styled.button`
   padding: 4px;
   display: flex;
@@ -8,10 +10,10 @@ export const IconButton = styled.button`
   border-radius: 24px;
   align-items: center;
   justify-content: center;
-  border: 2px solid #64a98c;
   background-color: transparent;
+  border: 2px solid ${primary.main};
 
   svg {
-    color: #64a98c;
+    color: ${primary.main};
   }
 `;
