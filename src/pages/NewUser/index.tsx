@@ -23,7 +23,6 @@ import { RegistrationCreate } from "~/types";
 
 const NewUserPage = () => {
   const { createRegistration } = useRegistrationContext();
-
   const { enqueueSnackbar } = useSnackbar();
 
   const history = useHistory();
@@ -85,8 +84,11 @@ const NewUserPage = () => {
   });
 
   return (
-    <FormProvider methods={methods} onSubmit={onSubmit}>
-      <Container maxWidth="sm">
+    <Container
+      maxWidth="sm"
+      style={{ height: "100%", justifyContent: "center" }}
+    >
+      <FormProvider methods={methods} onSubmit={onSubmit}>
         <Card>
           <Stack spacing="24px">
             <IconButton onClick={goToHome} aria-label="back">
@@ -104,8 +106,8 @@ const NewUserPage = () => {
             <Button>Cadastrar</Button>
           </Stack>
         </Card>
-      </Container>
-    </FormProvider>
+      </FormProvider>
+    </Container>
   );
 };
 

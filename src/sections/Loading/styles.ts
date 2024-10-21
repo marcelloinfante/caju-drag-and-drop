@@ -19,7 +19,6 @@ export const LoaderComponent = styled.div`
   height: 70px;
   border: 5px solid #000;
   padding: 0 8px;
-  box-sizing: border-box;
   background: linear-gradient(#fff 0 0) 0 0/8px 20px,
     linear-gradient(#fff 0 0) 100% 0/8px 20px,
     radial-gradient(farthest-side, #fff 90%, #0000) 0 5px/8px 8px content-box,

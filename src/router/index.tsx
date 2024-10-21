@@ -7,7 +7,7 @@ import DashboardPage from "~/pages/Dashboard";
 
 const Router = () => {
   return (
-    <div style={{ marginTop: 64 }}>
+    <div style={{ paddingTop: 64, height: "100%" }}>
       <HashRouter>
         <Switch>
           <Route exact path={routes.dashboard} component={DashboardPage} />
