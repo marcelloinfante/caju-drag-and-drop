@@ -3,19 +3,18 @@ import { useState } from "react";
 import { HiRefresh } from "react-icons/hi";
 import { useHistory } from "react-router-dom";
 
-import { useRegistrationContext } from "~/contexts/registration/hook";
-
 import routes from "~/router/routes";
+import { maskCpf, unmaskCpf } from "~/utils/cpfMask";
+
+import { useRegistrationContext } from "~/contexts/registration";
 
 import Button from "~/components/Button";
 import TextField from "~/components/TextField";
-import { IconButton } from "~/components/IconButton";
-
-import { maskCpf, unmaskCpf } from "~/utils/cpfMask";
+import IconButton from "~/components/IconButton";
 
 import * as S from "./styles";
 
-export const SearchBar = () => {
+const SearchBar = () => {
   const { readRegistrations } = useRegistrationContext();
 
   const [cpf, setCpf] = useState("");
@@ -64,3 +63,5 @@ export const SearchBar = () => {
     </S.Container>
   );
 };
+
+export default SearchBar;

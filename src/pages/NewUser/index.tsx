@@ -5,23 +5,26 @@ import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { useRegistrationContext } from "~/contexts/registration/hook";
-
 import routes from "~/router/routes";
 import { fDate } from "~/utils/formatDate";
 import { maskCpf, unmaskCpf } from "~/utils/cpfMask";
+
+import { useRegistrationContext } from "~/contexts/registration";
 
 import Card from "~/components/Card";
 import Stack from "~/components/Stack";
 import Button from "~/components/Button";
 import Container from "~/components/Container";
+import IconButton from "~/components/IconButton";
+import { useSnackbar } from "~/components/Snackbar";
 import FormProvider, { RHFTextField } from "~/components/HookForm";
-import { IconButton } from "~/components/IconButton";
 
 import { RegistrationCreate } from "~/types";
 
 const NewUserPage = () => {
   const { createRegistration } = useRegistrationContext();
+
+  const { enqueueSnackbar } = useSnackbar();
 
   const history = useHistory();
 
@@ -64,14 +67,21 @@ const NewUserPage = () => {
   const { handleSubmit } = methods;
 
   const onSubmit = handleSubmit(({ cpf, date, ...other }) => {
-    const registration = {
-      ...other,
-      date: fDate(date),
-      cpf: unmaskCpf(cpf),
-    };
+    try {
+      const registration = {
+        ...other,
+        date: fDate(date),
+        cpf: unmaskCpf(cpf),
+      };
 
-    createRegistration(registration);
-    goToHome();
+      createRegistration(registration);
+      enqueueSnackbar("Registro criado com sucesso!");
+
+      goToHome();
+    } catch (error) {
+      console.error(error);
+      enqueueSnackbar("Erro ao criar registro!", { variant: "error" });
+    }
   });
 
   return (

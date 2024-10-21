@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 
-import { useRegistrationContext } from "~/contexts/registration/hook";
+import { useRegistrationContext } from "~/contexts/registration";
 
+import Loading from "~/sections/Loading";
 import Collumns from "~/sections/Columns";
-import { SearchBar } from "~/sections/Searchbar";
+import SearchBar from "~/sections/Searchbar";
 
 import Container from "~/components/Container";
-import Loading from "~/sections/Loading";
 
 const DashboardPage = () => {
   const { loading, readRegistrations } = useRegistrationContext();
@@ -23,4 +23,5 @@ const DashboardPage = () => {
     </Container>
   );
 };
+
 export default DashboardPage;

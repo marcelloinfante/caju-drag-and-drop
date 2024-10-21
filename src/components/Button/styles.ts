@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ButtonMain = styled.button`
+export const Button = styled.button`
   height: 56px;
   border: none;
   outline: none;

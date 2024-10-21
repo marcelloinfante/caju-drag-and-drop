@@ -1,9 +1,11 @@
-import { IconButtonStyled } from "./styles";
+import * as S from "./styles";
 
-type IconButtonProps = {
+interface IconButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   children?: React.ReactNode;
-} & React.HTMLAttributes<HTMLButtonElement>;
+}
 
-export const IconButton = (props: IconButtonProps) => {
-  return <IconButtonStyled {...props}>{props.children}</IconButtonStyled>;
+const IconButton = ({ children, ...props }: IconButtonProps) => {
+  return <S.IconButton {...props}>{children}</S.IconButton>;
 };
+
+export default IconButton;

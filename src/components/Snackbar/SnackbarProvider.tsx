@@ -1,11 +1,11 @@
 import { useRef } from "react";
 import { SnackbarProvider as NotistackProvider } from "notistack";
 
-type Props = {
+interface Props {
   children: React.ReactNode;
-};
+}
 
-export default function SnackbarProvider({ children }: Props) {
+const SnackbarProvider = ({ children }: Props) => {
   const notistackRef = useRef<any>(null);
 
   return (
@@ -20,4 +20,6 @@ export default function SnackbarProvider({ children }: Props) {
       {children}
     </NotistackProvider>
   );
-}
+};
+
+export default SnackbarProvider;

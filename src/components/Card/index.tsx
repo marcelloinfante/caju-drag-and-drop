@@ -1,6 +1,6 @@
 import { ReactNode, HTMLAttributes } from "react";
 
-import { CardMain } from "./styles";
+import * as S from "./styles";
 
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
@@ -9,9 +9,9 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
 
 const Card = ({ children, innerRef, ...props }: CardProps) => {
   return (
-    <CardMain ref={innerRef} {...props}>
+    <S.Card ref={innerRef} {...props}>
       {children}
-    </CardMain>
+    </S.Card>
   );
 };
 

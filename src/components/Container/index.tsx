@@ -1,13 +1,15 @@
 import { ReactNode } from "react";
-import { Section } from "./styles";
 
 import { SIZE_TO_PIXELS } from "~/constants";
+
+import * as S from "./styles";
 
 interface ContainerProps {
   children: ReactNode;
   maxWidth?: "xs" | "sm" | "md" | "lg" | "xl" | false;
 }
 
+// TODO: improve
 const Container = ({ children, maxWidth = "lg" }: ContainerProps) => {
   let sectionMaxWidth;
 
@@ -15,7 +17,7 @@ const Container = ({ children, maxWidth = "lg" }: ContainerProps) => {
     sectionMaxWidth = SIZE_TO_PIXELS[maxWidth];
   }
 
-  return <Section maxWidth={sectionMaxWidth}>{children}</Section>;
+  return <S.Container maxWidth={sectionMaxWidth}>{children}</S.Container>;
 };
 
 export default Container;

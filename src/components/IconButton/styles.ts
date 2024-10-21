@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const IconButtonStyled = styled.button`
+export const IconButton = styled.button`
   padding: 4px;
   display: flex;
   cursor: pointer;

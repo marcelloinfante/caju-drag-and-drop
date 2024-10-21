@@ -1,3 +1,5 @@
-export { RegistrationContext } from "./registration-context";
-export { RegistrationConsumer } from "./registration-consumer";
-export { RegistrationProvider } from "./registration-provider";
+export { default as RegistrationContext } from "./RegistrationContext";
+export { default as RegistrationConsumer } from "./RegistrationConsumer";
+export { default as RegistrationProvider } from "./RegistrationProvider";
+
+export { default as useRegistrationContext } from "./hook";

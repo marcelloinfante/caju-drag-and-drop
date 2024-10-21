@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { shadows } from "~/theme/shadows";
 import { background } from "~/theme/palette";
 
-export const CardMain = styled.div`
+export const Card = styled.div`
   padding: 36px;
   margin-left: auto;
   margin-right: auto;

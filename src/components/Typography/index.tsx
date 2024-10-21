@@ -2,7 +2,7 @@ import { ReactNode, HTMLAttributes } from "react";
 
 import { typography } from "~/theme/typography";
 
-import { TypographyMain } from "./styles";
+import * as S from "./styles";
 
 interface TypographyProps extends HTMLAttributes<HTMLSpanElement> {
   children?: ReactNode;
@@ -41,14 +41,14 @@ const Typography = ({
   ...props
 }: TypographyProps) => {
   return (
-    <TypographyMain
+    <S.Typography
       align={align}
       color={color}
       style={{ ...typography[variant], ...style }}
       {...props}
     >
       {children}
-    </TypographyMain>
+    </S.Typography>
   );
 };
 

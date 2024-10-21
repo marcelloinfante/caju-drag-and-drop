@@ -17,7 +17,8 @@ interface TypographyProps {
     | string;
 }
 
-export const TypographyMain = styled.span<TypographyProps>`
+// TODO: fix type
+export const Typography = styled.span<TypographyProps>`
   color: ${({ color }) => text[color] || color};
   text-align: ${({ align }) => align};
   margin: 0;

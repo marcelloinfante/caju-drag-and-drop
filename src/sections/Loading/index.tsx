@@ -1,10 +1,10 @@
-import { LoaderBackground, LoaderComponent } from "./styles";
+import * as S from "./styles";
 
 const Loading = () => {
   return (
-    <LoaderBackground>
-      <LoaderComponent />;
-    </LoaderBackground>
+    <S.LoaderBackground>
+      <S.LoaderComponent />;
+    </S.LoaderBackground>
   );
 };
 

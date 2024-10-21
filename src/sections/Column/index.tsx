@@ -8,11 +8,11 @@ import RegistrationCard from "~/sections/RegistrationCard";
 
 import * as S from "./styles";
 
-type ColumnProps = {
+interface ColumnProps {
   title: string;
   status: StatusEnum;
   registrations: RegistrationRead[];
-};
+}
 
 const Collumn = ({ title, status, registrations }: ColumnProps) => {
   const { color, backgroundColor } = registrationColumns[status];
@@ -40,4 +40,5 @@ const Collumn = ({ title, status, registrations }: ColumnProps) => {
     </S.Column>
   );
 };
+
 export default Collumn;

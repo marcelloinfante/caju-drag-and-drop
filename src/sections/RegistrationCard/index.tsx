@@ -8,27 +8,39 @@ import {
   HiOutlineCalendar,
 } from "react-icons/hi";
 
-import { useRegistrationContext } from "~/contexts/registration/hook";
+import { maskCpf } from "~/utils/cpfMask";
+
+import { useRegistrationContext } from "~/contexts/registration";
+
+import Typography from "~/components/Typography";
+import { useSnackbar } from "~/components/Snackbar";
+
+import * as S from "./styles";
 
 import { RegistrationRead } from "~/types";
 
-import Typography from "~/components/Typography";
-import { maskCpf } from "~/utils/cpfMask";
-
-import * as S from "./styles";
-import { RegistrationCardMain } from "./styles";
-
-type RegistrationCardProps = {
+interface RegistrationCardProps {
   registration: RegistrationRead;
-};
+}
 
 const RegistrationCard = ({ registration }: RegistrationCardProps) => {
   const { deleteRegistration } = useRegistrationContext();
+  const { enqueueSnackbar } = useSnackbar();
+
+  const handleDeletion = () => {
+    try {
+      deleteRegistration(registration.id);
+      enqueueSnackbar("Registro deletado com sucesso!");
+    } catch (error) {
+      console.error(error);
+      enqueueSnackbar("Erro ao deletar registro!", { variant: "error" });
+    }
+  };
 
   return (
     <Draggable draggableId={registration.id} index={registration.index}>
       {(provided) => (
-        <RegistrationCardMain
+        <S.RegistrationCard
           innerRef={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
@@ -40,7 +52,7 @@ const RegistrationCard = ({ registration }: RegistrationCardProps) => {
             </S.IconAndText>
             <HiOutlineTrash
               style={{ cursor: "pointer" }}
-              onClick={() => deleteRegistration(registration.id)}
+              onClick={handleDeletion}
             />
           </S.TextAndDeletion>
           <S.IconAndText>
@@ -55,7 +67,7 @@ const RegistrationCard = ({ registration }: RegistrationCardProps) => {
             <HiOutlineCalendar />
             <Typography>{registration.date}</Typography>
           </S.IconAndText>
-        </RegistrationCardMain>
+        </S.RegistrationCard>
       )}
     </Draggable>
   );

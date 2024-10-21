@@ -1,8 +1,8 @@
 import { useContext } from "react";
 
-import { RegistrationContext } from "./registration-context";
+import RegistrationContext from "./RegistrationContext";
 
-export const useRegistrationContext = () => {
+const useRegistrationContext = () => {
   const context = useContext(RegistrationContext);
 
   if (!context)
@@ -12,3 +12,5 @@ export const useRegistrationContext = () => {
 
   return context;
 };
+
+export default useRegistrationContext;

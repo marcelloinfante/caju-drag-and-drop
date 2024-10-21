@@ -1,7 +1,8 @@
 import { InputHTMLAttributes } from "react";
 
+import Typography from "~/components/Typography";
+
 import { Input, TextFieldMain } from "./styles";
-import Typography from "../Typography";
 
 export interface TextFieldProps extends InputHTMLAttributes<any> {
   label?: string;

@@ -4,7 +4,7 @@ import { Header } from "./components/Header";
 import { SnackbarProvider } from "~/components/Snackbar";
 import { RegistrationProvider } from "~/contexts/registration";
 
-function App() {
+const App = () => {
   return (
     <SnackbarProvider>
       <RegistrationProvider>
@@ -15,6 +15,6 @@ function App() {
       </RegistrationProvider>
     </SnackbarProvider>
   );
-}
+};
 
 export default App;

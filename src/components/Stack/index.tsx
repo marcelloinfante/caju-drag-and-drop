@@ -1,5 +1,6 @@
 import { ReactNode, HTMLAttributes } from "react";
-import { StackMain } from "./styles";
+
+import * as S from "./styles";
 
 interface StackProps extends HTMLAttributes<HTMLDivElement> {
   spacing?: string;
@@ -18,7 +19,7 @@ const Stack = ({
   ...props
 }: StackProps) => {
   return (
-    <StackMain
+    <S.Stack
       style={style}
       ref={innerRef}
       spacing={spacing}
@@ -26,7 +27,7 @@ const Stack = ({
       {...props}
     >
       {children}
-    </StackMain>
+    </S.Stack>
   );
 };
 

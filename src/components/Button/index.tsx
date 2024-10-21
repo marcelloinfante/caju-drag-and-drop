@@ -1,9 +1,9 @@
 import { ReactNode, ButtonHTMLAttributes } from "react";
 
-import { ButtonMain } from "./styles";
-
 import { button } from "~/theme/palette";
-import Typography from "../Typography";
+import Typography from "~/components/Typography";
+
+import * as S from "./styles";
 
 interface ButtonProps extends ButtonHTMLAttributes<any> {
   children: ReactNode;
@@ -20,9 +20,9 @@ const Button = ({
   ...props
 }: ButtonProps) => {
   return (
-    <ButtonMain type="submit" style={{ ...button[color], ...style }} {...props}>
+    <S.Button type="submit" style={{ ...button[color], ...style }} {...props}>
       <Typography>{children}</Typography>
-    </ButtonMain>
+    </S.Button>
   );
 };
 

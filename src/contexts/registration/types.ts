@@ -11,14 +11,14 @@ export type ActionMapType<M extends { [index: string]: any }> = {
       };
 };
 
-export type RegistrationStateType = {
+export interface RegistrationStateType {
   loading: boolean;
   reviewRegistrations: RegistrationRead[];
   approvedRegistrations: RegistrationRead[];
   reprovedRegistrations: RegistrationRead[];
-};
+}
 
-export type RegistrationContextType = {
+export interface RegistrationContextType {
   resetRegistration: () => Promise<void>;
   readRegistrations: (cpf?: string) => Promise<void>;
   createRegistration: (registration: RegistrationCreate) => Promise<void>;
@@ -32,4 +32,4 @@ export type RegistrationContextType = {
   reviewRegistrations: RegistrationRead[];
   approvedRegistrations: RegistrationRead[];
   reprovedRegistrations: RegistrationRead[];
-};
+}

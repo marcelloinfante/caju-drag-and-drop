@@ -2,7 +2,7 @@ import { useMemo, useReducer, useCallback } from "react";
 
 import axios, { endpoints } from "~/utils/axios";
 
-import { RegistrationContext } from "./registration-context";
+import RegistrationContext from "./RegistrationContext";
 import { ActionMapType, RegistrationStateType } from "./types";
 
 import { RegistrationRead, RegistrationCreate, StatusEnum } from "~/types";
@@ -16,7 +16,7 @@ enum Types {
   DELETE_REGISTRATION = "DELETE_REGISTRATION",
 }
 
-type Payload = {
+interface Payload {
   [Types.RESET_LOADING]: {};
   [Types.RESET_REGISTRATION]: {};
   [Types.READ_REGISTRATIONS]: {
@@ -37,7 +37,7 @@ type Payload = {
     approvedRegistrations: RegistrationRead[];
     reprovedRegistrations: RegistrationRead[];
   };
-};
+}
 
 type ActionsType = ActionMapType<Payload>[keyof ActionMapType<Payload>];
 
@@ -105,7 +105,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-export function RegistrationProvider({ children }: Props) {
+const RegistrationProvider = ({ children }: Props) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const resetRegistration = useCallback(async () => {
@@ -287,4 +287,6 @@ export function RegistrationProvider({ children }: Props) {
       {children}
     </RegistrationContext.Provider>
   );
-}
+};
+
+export default RegistrationProvider;
