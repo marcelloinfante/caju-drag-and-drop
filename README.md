@@ -14,7 +14,7 @@ A tela de `Cadastro` exibe um formulário simples que será utilizado para criar
 
 ![Screenshot 2024-06-11 at 11 48 47 AM](https://github.com/caju-beneficios/caju-front-teste-1/assets/31169925/bbbb211c-165f-40e5-b2af-61adafd61398)
 
-## Apresentanção do problema
+## Apresentação do problema
 
 O desafio é aprimorar o código existente e implementar as funcionalidades que estão incompletas, use a sua experiência para identificar e propor soluções para os problemas encontrados.
 Sinta-se a vontade para refatorar, criar novas pastas, componentes, hooks, utils e o que mais achar necessário para garantir que o projeto esteja organizado e segue as boas práticas de desenvolvimento.
@@ -23,7 +23,7 @@ Sinta-se a vontade para refatorar, criar novas pastas, componentes, hooks, utils
 
 ### Tela Dashboard
 
-- Implementar `GET` ao carregar a pagina e ao fazer pequisa por `CPF`
+- Implementar `GET` ao carregar a pagina e ao fazer pesquisa por `CPF`
 - Filtrar os cards por coluna, usando o status.
 - Implementar `PUT` ao clicar em Reprovar e alterar o status para `REPROVED`
 - Implementar `PUT` ao clicar em Aprovar e alterar o status para `APPROVED`
@@ -42,7 +42,7 @@ Sinta-se a vontade para refatorar, criar novas pastas, componentes, hooks, utils
 - Implementar validação no campo de `email` para que aceite apenas emails válidos
 - Implementar validação no campo `nome completo` para que aceite pelo menos um espaço, no mínimo duas letras, e que a primeira letra não seja um número.
 - Implementar validação no campo CPF para aceitar apenas CPFs válidos e adicionar uma máscara de CPF ao campo.
-- Implementar `POST` ao preencher todos os campos corretamentes.
+- Implementar `POST` ao preencher todos os campos corretamente.
 - Redirecionar ao `/dashboard` ao criar uma nova admissão.
 
 ## API
@@ -69,7 +69,7 @@ https://github.com/typicode/json-server/tree/v0?tab=readme-ov-file#filter
 
 ## Extras (opcional)
 
-- Testes Unitários e de Integração `(Obrigátorio para Senior e Tech Lead)`
+- Testes Unitários e de Integração `(Obrigatório para Senior e Tech Lead)`
 - End-to-End (E2E)
 - Configuração de CI/CD com deploy automatizado
 
@@ -90,7 +90,7 @@ https://github.com/typicode/json-server/tree/v0?tab=readme-ov-file#filter
 - Experiência do usuário
 - Arquitetura (conceitos, patterns, algoritmos, forma como os problemas foram solucionados)
 - Boas práticas de desenvolvimento
-- Proeficiência com automação de testes. Não exigimos 100% de cobertura
+- Proficiência com automação de testes. Não exigimos 100% de cobertura
 - Senso crítico e analítico
 
 `Nos surpreenda demonstrando toda a sua habilidade e conhecimento.`
@@ -120,7 +120,7 @@ Execute a aplicação
 yarn dev
 ```
 
-Se tudo ocorreu bem os seguintes serviços estarão disponiveis em:
+Se tudo ocorreu bem os seguintes serviços estarão disponíveis em:
 <br/>
 
 Aplicação http://localhost:3001/
