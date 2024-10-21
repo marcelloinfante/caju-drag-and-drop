@@ -1,21 +1,18 @@
-import styled from "styled-components";
+import Typography from "~/components/Typography";
 
-export const Header = styled.header`
-  top: 0;
-  width: 100%;
-  height: 64px;
-  display: flex;
-  position: fixed;
-  padding: 0px 24px;
-  align-items: center;
-  background: linear-gradient(
-    258deg,
-    rgba(255, 117, 0, 1) 8%,
-    rgba(232, 5, 55, 1) 53%
+import * as S from "./styles";
+
+const Header = () => {
+  return (
+    <S.Header>
+      <S.HeaderContainer>
+        {/* TODO: h1 component */}
+        <Typography variant="h2" color="white">
+          Caju Front Teste
+        </Typography>
+      </S.HeaderContainer>
+    </S.Header>
   );
+};
 
-  h1 {
-    color: #fff;
-    font-size: 24px;
-  }
-`;
+export default Header;
