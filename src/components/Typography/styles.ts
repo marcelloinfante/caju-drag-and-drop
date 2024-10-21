@@ -19,7 +19,8 @@ interface TypographyProps {
 
 // TODO: fix type
 export const Typography = styled.span<TypographyProps>`
-  color: ${({ color }) => text[color] || color};
-  text-align: ${({ align }) => align};
   margin: 0;
+  width: 100%;
+  text-align: ${({ align }) => align};
+  color: ${({ color }) => text[color] || color};
 `;

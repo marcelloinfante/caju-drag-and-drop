@@ -104,28 +104,28 @@ export const action = {
 
 export const button = {
   primary: {
-    textColor: primary.main,
-    backgroundColor: primary.light,
+    textColor: primary.contrastText,
+    backgroundColor: primary.main,
   },
   secondary: {
-    textColor: secondary.main,
-    backgroundColor: secondary.light,
+    textColor: secondary.contrastText,
+    backgroundColor: secondary.main,
   },
   success: {
-    textColor: success.main,
-    backgroundColor: success.light,
+    textColor: success.contrastText,
+    backgroundColor: success.main,
   },
   error: {
-    textColor: error.main,
-    backgroundColor: error.light,
+    textColor: error.contrastText,
+    backgroundColor: error.main,
   },
   info: {
-    textColor: info.main,
-    backgroundColor: info.light,
+    textColor: info.contrastText,
+    backgroundColor: info.main,
   },
   warning: {
-    textColor: warning.main,
-    backgroundColor: warning.light,
+    textColor: warning.contrastText,
+    backgroundColor: warning.main,
   },
 };
 

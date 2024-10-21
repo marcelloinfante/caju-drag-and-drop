@@ -31,7 +31,11 @@ const SearchBar = () => {
     setCpf(maskedCpf);
     setError("Adicione um CPF válido");
 
-    if (maskedCpf.length === 0 || maskedCpf.length === 14) {
+    if (maskedCpf.length === 0) {
+      setError("");
+    }
+
+    if (maskedCpf.length === 14) {
       setError("");
 
       const unmaskedCpf = unmaskCpf(maskedCpf);

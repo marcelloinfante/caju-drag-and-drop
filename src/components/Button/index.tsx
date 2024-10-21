@@ -19,9 +19,13 @@ const Button = ({
   color = "primary",
   ...props
 }: ButtonProps) => {
+  const { textColor, backgroundColor } = button[color];
+
   return (
-    <S.Button type="submit" style={{ ...button[color], ...style }} {...props}>
-      <Typography>{children}</Typography>
+    <S.Button type="submit" style={{ backgroundColor, ...style }} {...props}>
+      <Typography color={textColor} align="center">
+        {children}
+      </Typography>
     </S.Button>
   );
 };
