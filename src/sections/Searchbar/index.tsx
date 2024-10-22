@@ -9,7 +9,6 @@ import { maskCpf, unmaskCpf } from "~/utils/cpfMask";
 import { useRegistrationContext } from "~/contexts/registration";
 
 import Button from "~/components/Button";
-import TextField from "~/components/TextField";
 import IconButton from "~/components/IconButton";
 
 import * as S from "./styles";

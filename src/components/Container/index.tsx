@@ -6,19 +6,16 @@ import * as S from "./styles";
 
 interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
-  maxWidth?: "xs" | "sm" | "md" | "lg" | "xl" | false;
+  maxWidth?: "xs" | "sm" | "md" | "lg" | "xl";
 }
 
-// TODO: improve
 const Container = ({ children, maxWidth = "lg", ...props }: ContainerProps) => {
-  let sectionMaxWidth;
-
-  if (maxWidth) {
-    sectionMaxWidth = sizes[maxWidth];
-  }
-
   return (
-    <S.Container maxWidth={sectionMaxWidth} {...props}>
+    <S.Container
+      data-testid="container"
+      style={{ maxWidth: sizes[maxWidth] }}
+      {...props}
+    >
       {children}
     </S.Container>
   );

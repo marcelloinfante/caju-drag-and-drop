@@ -20,18 +20,33 @@ const TextField = ({
   ...props
 }: TextFieldProps) => {
   return (
-    <S.TextField style={style}>
-      <Typography color={!!error ? "error" : "textPrimary"}>{label}</Typography>
-      <S.Input error={!!error} value={mask ? mask(value) : value} {...props} />
-      <Typography
-        color="error"
-        variant="caption"
-        style={{
-          position: "absolute",
-        }}
-      >
-        {error}
-      </Typography>
+    <S.TextField data-testid="textfield" style={style}>
+      {label && (
+        <Typography
+          data-testid="textfield-label"
+          color={error ? "error" : "textPrimary"}
+        >
+          {label}
+        </Typography>
+      )}
+      <S.Input
+        data-testid="textfield-input"
+        error={!!error}
+        value={mask ? mask(value) : value}
+        {...props}
+      />
+      {error && (
+        <Typography
+          data-testid="textfield-error"
+          color="error"
+          variant="caption"
+          style={{
+            position: "absolute",
+          }}
+        >
+          {error}
+        </Typography>
+      )}
     </S.TextField>
   );
 };

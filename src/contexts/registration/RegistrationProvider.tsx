@@ -129,9 +129,9 @@ const RegistrationProvider = ({ children }: Props) => {
     // await new Promise((r) => setTimeout(r, 1000));
     // //
 
-    let reviewRegistrations: RegistrationRead[] = [];
-    let approvedRegistrations: RegistrationRead[] = [];
-    let reprovedRegistrations: RegistrationRead[] = [];
+    const reviewRegistrations: RegistrationRead[] = [];
+    const approvedRegistrations: RegistrationRead[] = [];
+    const reprovedRegistrations: RegistrationRead[] = [];
 
     registrations.forEach((registration) => {
       if (registration.status === StatusEnum.REVIEW) {
@@ -218,7 +218,7 @@ const RegistrationProvider = ({ children }: Props) => {
         },
       });
     },
-    [state]
+    []
   );
 
   const deleteRegistration = useCallback(

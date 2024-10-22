@@ -20,10 +20,9 @@ const Stack = ({
 }: StackProps) => {
   return (
     <S.Stack
-      style={style}
       ref={innerRef}
-      spacing={spacing}
-      direction={direction}
+      data-testid="stack"
+      style={{ gap: spacing, flexDirection: direction, ...style }}
       {...props}
     >
       {children}

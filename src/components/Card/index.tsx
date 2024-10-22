@@ -9,7 +9,7 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
 
 const Card = ({ children, innerRef, ...props }: CardProps) => {
   return (
-    <S.Card ref={innerRef} {...props}>
+    <S.Card data-testid="card" ref={innerRef} {...props}>
       {children}
     </S.Card>
   );

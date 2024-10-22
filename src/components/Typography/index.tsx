@@ -44,6 +44,7 @@ const Typography = ({
     <S.Typography
       align={align}
       color={color}
+      data-testid="typography"
       style={{ ...typography[variant], ...style }}
       {...props}
     >

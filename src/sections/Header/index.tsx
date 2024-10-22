@@ -4,7 +4,7 @@ import * as S from "./styles";
 
 const Header = () => {
   return (
-    <S.Header>
+    <S.Header data-testid="header">
       <S.HeaderContainer>
         {/* TODO: h1 component */}
         <Typography variant="h2" color="white">
