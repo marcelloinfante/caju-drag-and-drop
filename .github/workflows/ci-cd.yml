@@ -1,0 +1,35 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: ["main"]
+
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    name: Build, Test, Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build docker image
+        run: docker build . -t caju:$(date +%s)
+
+      - name: Run tests
+        run: docker run caju:$(date +%s) yarn test:dev
+
+      - name: Run linter
+        run: docker run caju:$(date +%s) yarn lint
+
+      # - name: Build frontend
+      #   run: docker run caju:$(date +%s) yarn build
+
+      # - name: Deploy frontend
+      #   run: docker run -d -p 3001:3001 caju:$(date +%s) yarn preview
+
+      # - name: Deploy backend
+      #   run: docker run -d -p 3000:3000 caju:$(date +%s) yarn db:init
