@@ -17,19 +17,19 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build docker image
-        run: docker build . -t caju:$(date +%s)
+        run: docker build . -t caju:latest
 
       - name: Run tests
-        run: docker run caju:$(date +%s) yarn test:dev
+        run: docker run caju:latest yarn test:dev
 
       - name: Run linter
-        run: docker run caju:$(date +%s) yarn lint
+        run: docker run caju:latest yarn lint
 
       # - name: Build frontend
-      #   run: docker run caju:$(date +%s) yarn build
+      #   run: docker run caju:latest yarn build
 
       # - name: Deploy frontend
-      #   run: docker run -d -p 3001:3001 caju:$(date +%s) yarn preview
+      #   run: docker run -d -p 3001:3001 caju:latest yarn preview
 
       # - name: Deploy backend
-      #   run: docker run -d -p 3000:3000 caju:$(date +%s) yarn db:init
+      #   run: docker run -d -p 3000:3000 caju:latest yarn db:init
