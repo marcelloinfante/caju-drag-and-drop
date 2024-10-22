@@ -20,7 +20,7 @@ jobs:
         run: docker build . -t caju:latest
 
       - name: Run tests
-        run: docker run caju:latest yarn test:dev
+        run: docker run caju:latest yarn jest
 
       - name: Run linter
         run: docker run caju:latest yarn lint
