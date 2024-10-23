@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useRegistrationContext } from "~/contexts/registration";
 
 import Loading from "~/sections/Loading";
-import Collumns from "~/sections/Columns";
+import Columns from "~/sections/Columns";
 import SearchBar from "~/sections/SearchBar";
 
 import Container from "~/components/Container";
@@ -18,7 +18,7 @@ const DashboardPage = () => {
   return (
     <Container>
       <SearchBar />
-      <Collumns />
+      <Columns />
       {loading && <Loading />}
     </Container>
   );

@@ -14,7 +14,7 @@ interface ColumnProps {
   registrations: RegistrationRead[];
 }
 
-const Collumn = ({ title, status, registrations }: ColumnProps) => {
+const Column = ({ title, status, registrations }: ColumnProps) => {
   const { color, backgroundColor } = registrationColumns[status];
 
   return (
@@ -24,21 +24,16 @@ const Collumn = ({ title, status, registrations }: ColumnProps) => {
       </Typography>
       <Droppable droppableId={status}>
         {(provided) => (
-          <S.CollumContent ref={provided.innerRef} {...provided.droppableProps}>
+          <S.ColumnContent ref={provided.innerRef} {...provided.droppableProps}>
             {registrations.map((registration) => {
-              return (
-                <RegistrationCard
-                  key={registration.id}
-                  registration={registration}
-                />
-              );
+              return <RegistrationCard key={registration.id} registration={registration} />;
             })}
             {provided.placeholder}
-          </S.CollumContent>
+          </S.ColumnContent>
         )}
       </Droppable>
     </S.Column>
   );
 };
 
-export default Collumn;
+export default Column;

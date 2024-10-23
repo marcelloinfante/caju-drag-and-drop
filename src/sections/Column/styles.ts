@@ -9,7 +9,7 @@ export const Column = styled(Card)`
   max-height: 800px;
 `;
 
-export const CollumContent = styled.div`
+export const ColumnContent = styled.div`
   height: 100%;
   max-height: 560px;
   margin-top: 24px;

@@ -2,20 +2,16 @@ import { DragDropContext, DropResult } from "react-beautiful-dnd";
 
 import { useRegistrationContext } from "~/contexts/registration";
 
-import Collumn from "~/sections/Column";
+import Column from "~/sections/Column";
 import { useSnackbar } from "~/components/Snackbar";
 
 import * as S from "./styles";
 
 import { StatusEnum } from "~/types";
 
-const Collumns = () => {
-  const {
-    reviewRegistrations,
-    approvedRegistrations,
-    reprovedRegistrations,
-    updateRegistrations,
-  } = useRegistrationContext();
+const Columns = () => {
+  const { reviewRegistrations, approvedRegistrations, reprovedRegistrations, updateRegistrations } =
+    useRegistrationContext();
 
   const { enqueueSnackbar } = useSnackbar();
 
@@ -25,18 +21,13 @@ const Collumns = () => {
         return;
       }
 
-      if (
-        destination.droppableId === source.droppableId &&
-        destination.index === source.index
-      ) {
+      if (destination.droppableId === source.droppableId && destination.index === source.index) {
         return;
       }
 
-      const sourceStatus =
-        StatusEnum[source.droppableId as keyof typeof StatusEnum];
+      const sourceStatus = StatusEnum[source.droppableId as keyof typeof StatusEnum];
 
-      const destinationStatus =
-        StatusEnum[destination.droppableId as keyof typeof StatusEnum];
+      const destinationStatus = StatusEnum[destination.droppableId as keyof typeof StatusEnum];
 
       const registrations = {
         [StatusEnum.REVIEW]: [...reviewRegistrations],
@@ -76,17 +67,13 @@ const Collumns = () => {
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <S.Columns direction="row" spacing="24px">
-        <Collumn
-          title="Revisão"
-          status={StatusEnum.REVIEW}
-          registrations={reviewRegistrations}
-        />
-        <Collumn
+        <Column title="Revisão" status={StatusEnum.REVIEW} registrations={reviewRegistrations} />
+        <Column
           title="Aprovado"
           status={StatusEnum.APPROVED}
           registrations={approvedRegistrations}
         />
-        <Collumn
+        <Column
           title="Reprovado"
           status={StatusEnum.REPROVED}
           registrations={reprovedRegistrations}
@@ -96,4 +83,4 @@ const Collumns = () => {
   );
 };
 
-export default Collumns;
+export default Columns;
