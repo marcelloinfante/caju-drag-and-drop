@@ -8,7 +8,7 @@ import RegistrationCard from "~/sections/RegistrationCard";
 
 import * as S from "./styles";
 
-interface ColumnProps {
+export interface ColumnProps {
   title: string;
   status: StatusEnum;
   registrations: RegistrationRead[];
@@ -18,7 +18,7 @@ const Column = ({ title, status, registrations }: ColumnProps) => {
   const { color, backgroundColor } = registrationColumns[status];
 
   return (
-    <S.Column style={{ backgroundColor }}>
+    <S.Column data-testid="column" style={{ backgroundColor }}>
       <Typography variant="h3" color={color}>
         {title}
       </Typography>

@@ -66,7 +66,7 @@ const Columns = () => {
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <S.Columns direction="row" spacing="24px">
+      <S.Columns data-testid="columns" direction="row" spacing="24px">
         <Column title="Revisão" status={StatusEnum.REVIEW} registrations={reviewRegistrations} />
         <Column
           title="Aprovado"
