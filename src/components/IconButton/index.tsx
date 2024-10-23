@@ -5,7 +5,11 @@ interface IconButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
 }
 
 const IconButton = ({ children, ...props }: IconButtonProps) => {
-  return <S.IconButton {...props}>{children}</S.IconButton>;
+  return (
+    <S.IconButton data-testid="icon-button" {...props}>
+      {children}
+    </S.IconButton>
+  );
 };
 
 export default IconButton;

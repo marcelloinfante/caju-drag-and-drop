@@ -1,7 +1,6 @@
 import { useState } from "react";
-
+import { Link } from "react-router-dom";
 import { HiRefresh } from "react-icons/hi";
-import { useHistory } from "react-router-dom";
 
 import routes from "~/router/routes";
 import { maskCpf, unmaskCpf } from "~/utils/cpfMask";
@@ -18,12 +17,6 @@ const SearchBar = () => {
 
   const [cpf, setCpf] = useState("");
   const [error, setError] = useState("");
-
-  const history = useHistory();
-
-  const goToNewAdmissionPage = () => {
-    history.push(routes.newUser);
-  };
 
   const handleOnChange = (e: React.ChangeEvent<any>) => {
     const maskedCpf = maskCpf(e.target.value);
@@ -49,7 +42,7 @@ const SearchBar = () => {
   };
 
   return (
-    <S.Container>
+    <S.Container data-testId="search-bar">
       <S.CPFField
         value={cpf}
         error={error}
@@ -57,10 +50,12 @@ const SearchBar = () => {
         placeholder="Digite um CPF válido"
       />
       <S.Actions>
-        <IconButton aria-label="refetch" onClick={handleOnRefresh}>
+        <IconButton onClick={handleOnRefresh}>
           <HiRefresh />
         </IconButton>
-        <Button onClick={goToNewAdmissionPage}>Nova Admissão</Button>
+        <Link to={routes.newUser}>
+          <Button>Nova Admissão</Button>
+        </Link>
       </S.Actions>
     </S.Container>
   );

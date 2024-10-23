@@ -4,7 +4,7 @@ import { useRegistrationContext } from "~/contexts/registration";
 
 import Loading from "~/sections/Loading";
 import Collumns from "~/sections/Columns";
-import SearchBar from "~/sections/Searchbar";
+import SearchBar from "~/sections/SearchBar";
 
 import Container from "~/components/Container";
 

@@ -1,5 +1,6 @@
 import { ReactNode, HTMLAttributes } from "react";
 
+import { text } from "~/theme/palette";
 import { typography } from "~/theme/typography";
 
 import * as S from "./styles";
@@ -42,10 +43,13 @@ const Typography = ({
 }: TypographyProps) => {
   return (
     <S.Typography
-      align={align}
-      color={color}
       data-testid="typography"
-      style={{ ...typography[variant], ...style }}
+      style={{
+        textAlign: align,
+        color: text[color] || color,
+        ...typography[variant],
+        ...style,
+      }}
       {...props}
     >
       {children}

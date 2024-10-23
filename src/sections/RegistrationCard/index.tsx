@@ -41,6 +41,7 @@ const RegistrationCard = ({ registration }: RegistrationCardProps) => {
     <Draggable draggableId={registration.id} index={registration.index}>
       {(provided) => (
         <S.RegistrationCard
+          data-testid="registration-card"
           innerRef={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
@@ -51,6 +52,7 @@ const RegistrationCard = ({ registration }: RegistrationCardProps) => {
               <Typography variant="h4">{registration.name}</Typography>
             </S.IconAndText>
             <HiOutlineTrash
+              data-testid="registration-card-delete"
               style={{ cursor: "pointer" }}
               onClick={handleDeletion}
             />

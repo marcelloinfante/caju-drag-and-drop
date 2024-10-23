@@ -10,10 +10,10 @@ const SnackbarProvider = ({ children }: Props) => {
 
   return (
     <NotistackProvider
-      ref={notistackRef}
       maxSnack={5}
       preventDuplicate
       variant="success"
+      ref={notistackRef}
       autoHideDuration={3000}
       anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
     >

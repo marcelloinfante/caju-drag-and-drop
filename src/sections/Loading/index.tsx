@@ -2,7 +2,7 @@ import * as S from "./styles";
 
 const Loading = () => {
   return (
-    <S.LoaderBackground>
+    <S.LoaderBackground data-testid="loading">
       <S.LoaderComponent />;
     </S.LoaderBackground>
   );
