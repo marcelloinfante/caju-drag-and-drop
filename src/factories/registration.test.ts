@@ -15,6 +15,20 @@ describe("RegistrationFactory", () => {
     expect(registration).toBeInstanceOf(RegistrationFactory);
   });
 
+  it("should create multiple instances when create is called", () => {
+    const registrations = RegistrationFactory.create(5);
+
+    registrations.forEach((registration) =>
+      expect(registration).toBeInstanceOf(RegistrationFactory)
+    );
+  });
+
+  it("should create multiple objects when create is create_dump", () => {
+    const registrations = RegistrationFactory.create_dump(5);
+
+    registrations.forEach((registration) => expect(registration).toBeInstanceOf(Object));
+  });
+
   it("should return object when dump is called", () => {
     const registration = new RegistrationFactory();
 
