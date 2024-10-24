@@ -10,7 +10,6 @@ interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 const Container = ({ children, style, maxWidth = "lg", ...props }: ContainerProps) => {
-  console.log(sizes[maxWidth]);
   return (
     <S.Container data-testid="container" style={{ maxWidth: sizes[maxWidth], ...style }} {...props}>
       {children}

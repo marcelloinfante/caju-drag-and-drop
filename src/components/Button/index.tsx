@@ -22,7 +22,12 @@ const Button = ({
 
   return (
     <S.Button type="submit" data-testid="button" style={{ backgroundColor, ...style }} {...props}>
-      <Typography data-testid="button-text" color={textColor} align="center">
+      <Typography
+        align="center"
+        color={textColor}
+        data-testid="button-text"
+        style={{ fontWeight: "bold" }}
+      >
         {children}
       </Typography>
     </S.Button>

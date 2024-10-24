@@ -2,7 +2,7 @@ import "@testing-library/jest-dom";
 import { render, screen, fireEvent } from "@testing-library/react";
 
 import { createMemoryHistory } from "history";
-import { BrowserRouter, Router } from "react-router-dom";
+import { Router } from "react-router-dom";
 
 import { maskCpf } from "@/utils/cpfMask";
 
@@ -18,21 +18,19 @@ const renderSearchBar = () => {
   const history = createMemoryHistory({ initialEntries: ["/dashboard"] });
 
   render(
-    <BrowserRouter>
-      <Router history={history}>
-        <RegistrationContext.Provider
-          value={
-            {
-              readRegistrations,
-            } as unknown as RegistrationContextType
-          }
-        >
-          <SnackbarProvider>
-            <SearchBar />
-          </SnackbarProvider>
-        </RegistrationContext.Provider>
-      </Router>
-    </BrowserRouter>
+    <Router location={history.location} navigator={history}>
+      <RegistrationContext.Provider
+        value={
+          {
+            readRegistrations,
+          } as unknown as RegistrationContextType
+        }
+      >
+        <SnackbarProvider>
+          <SearchBar />
+        </SnackbarProvider>
+      </RegistrationContext.Provider>
+    </Router>
   );
 
   return { readRegistrations, history };

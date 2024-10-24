@@ -42,7 +42,7 @@ const SearchBar = () => {
   };
 
   return (
-    <S.Container data-testId="search-bar">
+    <S.Container data-testid="search-bar">
       <S.CPFField
         value={cpf}
         error={error}

@@ -76,7 +76,7 @@ const NewUserPage = () => {
   });
 
   return (
-    <Container maxWidth="lg" style={{ height: "100%", justifyContent: "center" }}>
+    <Container maxWidth="sm" style={{ height: "100%", justifyContent: "center" }}>
       <FormProvider methods={methods} onSubmit={onSubmit}>
         <Card>
           <Stack spacing="24px">
@@ -87,7 +87,7 @@ const NewUserPage = () => {
             <RHFTextField name="email" label="Email" placeholder="Email" />
             <RHFTextField name="cpf" label="CPF" mask={maskCpf} placeholder="CPF" />
             <RHFTextField name="date" label="Data de admissão" type="date" />
-            <Button>Cadastrar</Button>
+            <Button style={{ marginTop: "12px" }}>Cadastrar</Button>
           </Stack>
         </Card>
       </FormProvider>
