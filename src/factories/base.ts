@@ -1,5 +1,5 @@
 export class BaseFactory {
-  constructor(attrs: any = {}) {}
+  constructor(_attrs: any = {}) {}
 
   static create(numberOfInstances: number, attrs?: any): BaseFactory[] {
     const instances = [];
