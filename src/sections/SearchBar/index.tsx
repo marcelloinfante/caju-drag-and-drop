@@ -2,13 +2,13 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { HiRefresh } from "react-icons/hi";
 
-import routes from "~/router/routes";
-import { maskCpf, unmaskCpf } from "~/utils/cpfMask";
+import routes from "@/router/routes";
+import { maskCpf, unmaskCpf } from "@/utils/cpfMask";
 
-import { useRegistrationContext } from "~/contexts/registration";
+import { useRegistrationContext } from "@/contexts/registration";
 
-import Button from "~/components/Button";
-import IconButton from "~/components/IconButton";
+import Button from "@/components/Button";
+import IconButton from "@/components/IconButton";
 
 import * as S from "./styles";
 

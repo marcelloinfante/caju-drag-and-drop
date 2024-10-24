@@ -1,16 +1,13 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
-import { DragDropContext } from "react-beautiful-dnd";
 
-import { registrationColumns } from "~/theme/palette";
+import { RegistrationContext, RegistrationContextType } from "@/contexts/registration";
 
-import { RegistrationContext, RegistrationContextType } from "~/contexts/registration";
-
-import { SnackbarProvider } from "~/components/Snackbar";
+import { SnackbarProvider } from "@/components/Snackbar";
 
 import Columns from ".";
 
-import { StatusEnum, RegistrationRead } from "~/types";
+import { StatusEnum, RegistrationRead } from "@/types";
 
 const reviewRegistrations: RegistrationRead[] = [
   {
@@ -125,8 +122,8 @@ const renderColumn = () => {
   return { updateRegistrations };
 };
 
-jest.mock("~/config-global", () => ({
-  HOST_API: "http://localhost:3000",
+jest.mock("@/config-global", () => ({
+  HOST_API: "http://localhost:8000",
 }));
 
 describe("Columns", () => {

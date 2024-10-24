@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import { sizes } from "~/theme/responsive";
-import TextField from "~/components/TextField";
+import { sizes } from "@/theme/responsive";
+import TextField from "@/components/TextField";
 
 export const Container = styled.div`
   gap: 16px;

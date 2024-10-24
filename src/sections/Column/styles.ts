@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import Card from "~/components/Card";
+import Card from "@/components/Card";
 
 export const Column = styled(Card)`
   width: 100%;

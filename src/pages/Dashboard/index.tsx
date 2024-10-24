@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 
-import { useRegistrationContext } from "~/contexts/registration";
+import { useRegistrationContext } from "@/contexts/registration";
 
-import Loading from "~/sections/Loading";
-import Columns from "~/sections/Columns";
-import SearchBar from "~/sections/SearchBar";
+import Loading from "@/sections/Loading";
+import Columns from "@/sections/Columns";
+import SearchBar from "@/sections/SearchBar";
 
-import Container from "~/components/Container";
+import Container from "@/components/Container";
 
 const DashboardPage = () => {
   const { loading, readRegistrations } = useRegistrationContext();

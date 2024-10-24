@@ -1,11 +1,11 @@
 import { useMemo, useReducer, useCallback } from "react";
 
-import axios, { endpoints } from "~/utils/axios";
+import axios, { endpoints } from "@/utils/axios";
 
 import RegistrationContext from "./RegistrationContext";
 import { ActionMapType, RegistrationStateType } from "./types";
 
-import { RegistrationRead, RegistrationCreate, StatusEnum } from "~/types";
+import { RegistrationRead, RegistrationCreate, StatusEnum } from "@/types";
 
 enum Types {
   RESET_LOADING = "RESET_LOADING",
@@ -283,9 +283,7 @@ const RegistrationProvider = ({ children }: Props) => {
   );
 
   return (
-    <RegistrationContext.Provider value={memoizedValue}>
-      {children}
-    </RegistrationContext.Provider>
+    <RegistrationContext.Provider value={memoizedValue}>{children}</RegistrationContext.Provider>
   );
 };
 

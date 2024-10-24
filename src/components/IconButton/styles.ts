@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { primary } from "~/theme/palette";
+import { primary } from "@/theme/palette";
 
 export const IconButton = styled.button`
   padding: 4px;

@@ -2,11 +2,11 @@ import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import { DragDropContext } from "react-beautiful-dnd";
 
-import { registrationColumns } from "~/theme/palette";
+import { registrationColumns } from "@/theme/palette";
 
 import Column, { ColumnProps } from ".";
 
-import { StatusEnum, RegistrationRead } from "~/types";
+import { StatusEnum, RegistrationRead } from "@/types";
 
 const registrations: RegistrationRead[] = [
   {
@@ -50,8 +50,8 @@ const renderColumn = ({ ...props }: ColumnProps) => {
   return { onDragEnd };
 };
 
-jest.mock("~/config-global", () => ({
-  HOST_API: "http://localhost:3000",
+jest.mock("@/config-global", () => ({
+  HOST_API: "http://localhost:8000",
 }));
 
 describe("Column", () => {

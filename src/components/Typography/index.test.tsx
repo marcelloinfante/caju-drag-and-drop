@@ -1,8 +1,8 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 
-import { text } from "~/theme/palette";
-import { typography as typographyStyles } from "~/theme/typography";
+import { text } from "@/theme/palette";
+import { typography as typographyStyles } from "@/theme/typography";
 
 import Typography from ".";
 

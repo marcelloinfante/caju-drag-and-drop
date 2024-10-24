@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 
-import { button as buttonPalette } from "~/theme/palette";
+import { button as buttonPalette } from "@/theme/palette";
 
 import Button from ".";
 
@@ -53,22 +53,18 @@ describe("Button", () => {
     expect(button).toHaveStyle("background-color: salmon");
   });
 
-  it.each([
-    "primary",
-    "secondary",
-    "success",
-    "error",
-    "info",
-    "warning",
-  ] as const)("should have color when provided", (color) => {
-    render(<Button color={color}>Test</Button>);
+  it.each(["primary", "secondary", "success", "error", "info", "warning"] as const)(
+    "should have color when provided",
+    (color) => {
+      render(<Button color={color}>Test</Button>);
 
-    const button = screen.getByTestId("button");
-    const buttonText = screen.getByTestId("button-text");
+      const button = screen.getByTestId("button");
+      const buttonText = screen.getByTestId("button-text");
 
-    const { textColor, backgroundColor } = buttonPalette[color];
+      const { textColor, backgroundColor } = buttonPalette[color];
 
-    expect(button).toHaveStyle(`background-color: ${backgroundColor}`);
-    expect(buttonText).toHaveStyle(`color: ${textColor}`);
-  });
+      expect(button).toHaveStyle(`background-color: ${backgroundColor}`);
+      expect(buttonText).toHaveStyle(`color: ${textColor}`);
+    }
+  );
 });

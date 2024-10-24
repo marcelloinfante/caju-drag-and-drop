@@ -1,4 +1,4 @@
-import { RegistrationRead, RegistrationCreate } from "src/types";
+import { RegistrationRead, RegistrationCreate } from "@/types";
 
 export type ActionMapType<M extends { [index: string]: any }> = {
   [Key in keyof M]: M[Key] extends undefined

@@ -1,6 +1,6 @@
 import { ReactNode, HTMLAttributes } from "react";
 
-import { sizes } from "~/theme/responsive";
+import { sizes } from "@/theme/responsive";
 
 import * as S from "./styles";
 
@@ -11,11 +11,7 @@ interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
 
 const Container = ({ children, maxWidth = "lg", ...props }: ContainerProps) => {
   return (
-    <S.Container
-      data-testid="container"
-      style={{ maxWidth: sizes[maxWidth] }}
-      {...props}
-    >
+    <S.Container data-testid="container" style={{ maxWidth: sizes[maxWidth] }} {...props}>
       {children}
     </S.Container>
   );

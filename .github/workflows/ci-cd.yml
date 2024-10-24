@@ -29,7 +29,7 @@
 #         run: docker run caju:latest yarn build
 
 #       - name: Deploy frontend
-#         run: docker run -d -p 3001:3001 caju:latest yarn preview
+#         run: docker run -d -p 3000:3000 caju:latest yarn preview
 
 #       - name: Deploy backend
-#         run: docker run -d -p 3000:3000 caju:latest yarn db:init
+#         run: docker run -d -p 8000:8000 caju:latest yarn db:init

@@ -1,13 +1,13 @@
 import { DragDropContext, DropResult } from "react-beautiful-dnd";
 
-import { useRegistrationContext } from "~/contexts/registration";
+import { useRegistrationContext } from "@/contexts/registration";
 
-import Column from "~/sections/Column";
-import { useSnackbar } from "~/components/Snackbar";
+import Column from "@/sections/Column";
+import { useSnackbar } from "@/components/Snackbar";
 
 import * as S from "./styles";
 
-import { StatusEnum } from "~/types";
+import { StatusEnum } from "@/types";
 
 const Columns = () => {
   const { reviewRegistrations, approvedRegistrations, reprovedRegistrations, updateRegistrations } =

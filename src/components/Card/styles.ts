@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import { shadows } from "~/theme/shadows";
-import { background } from "~/theme/palette";
+import { shadows } from "@/theme/shadows";
+import { background } from "@/theme/palette";
 
 export const Card = styled.div`
   padding: 36px;

@@ -1,6 +1,6 @@
 import { InputHTMLAttributes } from "react";
 
-import Typography from "~/components/Typography";
+import Typography from "@/components/Typography";
 
 import * as S from "./styles";
 
@@ -11,21 +11,11 @@ export interface TextFieldProps extends InputHTMLAttributes<any> {
   mask?: (value: any) => string;
 }
 
-const TextField = ({
-  label,
-  error,
-  style,
-  value,
-  mask,
-  ...props
-}: TextFieldProps) => {
+const TextField = ({ label, error, style, value, mask, ...props }: TextFieldProps) => {
   return (
     <S.TextField data-testid="textfield" style={style}>
       {label && (
-        <Typography
-          data-testid="textfield-label"
-          color={error ? "error" : "textPrimary"}
-        >
+        <Typography data-testid="textfield-label" color={error ? "error" : "textPrimary"}>
           {label}
         </Typography>
       )}

@@ -4,11 +4,11 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { createMemoryHistory } from "history";
 import { BrowserRouter, Router } from "react-router-dom";
 
-import { maskCpf } from "~/utils/cpfMask";
+import { maskCpf } from "@/utils/cpfMask";
 
-import { RegistrationContext, RegistrationContextType } from "~/contexts/registration";
+import { RegistrationContext, RegistrationContextType } from "@/contexts/registration";
 
-import { SnackbarProvider } from "~/components/Snackbar";
+import { SnackbarProvider } from "@/components/Snackbar";
 
 import SearchBar from ".";
 
@@ -38,8 +38,8 @@ const renderSearchBar = () => {
   return { readRegistrations, history };
 };
 
-jest.mock("~/config-global", () => ({
-  HOST_API: "http://localhost:3000",
+jest.mock("@/config-global", () => ({
+  HOST_API: "http://localhost:8000",
 }));
 
 describe("SearchBar", () => {

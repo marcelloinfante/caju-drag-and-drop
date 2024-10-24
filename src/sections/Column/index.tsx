@@ -1,10 +1,10 @@
 import { Droppable } from "react-beautiful-dnd";
 
-import { registrationColumns } from "~/theme/palette";
-import { RegistrationRead, StatusEnum } from "~/types";
+import { registrationColumns } from "@/theme/palette";
+import { RegistrationRead, StatusEnum } from "@/types";
 
-import Typography from "~/components/Typography";
-import RegistrationCard from "~/sections/RegistrationCard";
+import Typography from "@/components/Typography";
+import RegistrationCard from "@/sections/RegistrationCard";
 
 import * as S from "./styles";
 

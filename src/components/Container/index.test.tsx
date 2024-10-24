@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 
-import { sizes } from "~/theme/responsive";
+import { sizes } from "@/theme/responsive";
 
 import Container from ".";
 

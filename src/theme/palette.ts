@@ -1,6 +1,6 @@
 import { alpha } from "@mui/material/styles";
 
-import { StatusEnum } from "~/types";
+import { StatusEnum } from "@/types";
 
 export const grey = {
   0: "#FFFFFF",

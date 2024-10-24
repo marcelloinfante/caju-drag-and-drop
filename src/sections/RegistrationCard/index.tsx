@@ -8,16 +8,16 @@ import {
   HiOutlineCalendar,
 } from "react-icons/hi";
 
-import { maskCpf } from "~/utils/cpfMask";
+import { maskCpf } from "@/utils/cpfMask";
 
-import { useRegistrationContext } from "~/contexts/registration";
+import { useRegistrationContext } from "@/contexts/registration";
 
-import Typography from "~/components/Typography";
-import { useSnackbar } from "~/components/Snackbar";
+import Typography from "@/components/Typography";
+import { useSnackbar } from "@/components/Snackbar";
 
 import * as S from "./styles";
 
-import { RegistrationRead } from "~/types";
+import { RegistrationRead } from "@/types";
 
 interface RegistrationCardProps {
   registration: RegistrationRead;

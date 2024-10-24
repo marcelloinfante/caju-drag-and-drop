@@ -1,7 +1,7 @@
 import { ReactNode, HTMLAttributes } from "react";
 
-import { text } from "~/theme/palette";
-import { typography } from "~/theme/typography";
+import { text } from "@/theme/palette";
+import { typography } from "@/theme/typography";
 
 import * as S from "./styles";
 

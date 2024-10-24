@@ -2,15 +2,15 @@ import "@testing-library/jest-dom";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 
-import { maskCpf } from "~/utils/cpfMask";
+import { maskCpf } from "@/utils/cpfMask";
 
-import { RegistrationContext, RegistrationContextType } from "~/contexts/registration";
+import { RegistrationContext, RegistrationContextType } from "@/contexts/registration";
 
-import { SnackbarProvider } from "~/components/Snackbar";
+import { SnackbarProvider } from "@/components/Snackbar";
 
 import RegistrationCard from ".";
 
-import { StatusEnum } from "~/types";
+import { StatusEnum } from "@/types";
 
 const registrationData = {
   id: "1",
@@ -51,8 +51,8 @@ const renderRegistrationCard = () => {
   return { onDragEnd, deleteRegistration };
 };
 
-jest.mock("~/config-global", () => ({
-  HOST_API: "http://localhost:3000",
+jest.mock("@/config-global", () => ({
+  HOST_API: "http://localhost:8000",
 }));
 
 describe("RegistrationCard", () => {

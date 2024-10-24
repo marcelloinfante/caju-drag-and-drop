@@ -1,6 +1,6 @@
 import { Controller, useFormContext } from "react-hook-form";
 
-import TextField, { TextFieldProps } from "~/components/TextField";
+import TextField, { TextFieldProps } from "@/components/TextField";
 
 interface RHFTextFieldProps extends TextFieldProps {
   name: string;

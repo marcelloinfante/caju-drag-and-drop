@@ -52,7 +52,7 @@ Você consumirá uma API mockada localmente, que será executada utilizando o js
 Exemplo de Requisição:
 
 ```
-POST http://localhost:3000/registrations
+POST http://localhost:8000/registrations
 Content-Type: application/json
 {
   "date": "23/10/2023",
@@ -125,7 +125,7 @@ Se tudo ocorreu bem os seguintes serviços estarão disponíveis em:
 
 Aplicação http://localhost:3001/
 <br/>
-Json Web Server http://localhost:3000/
+Json Web Server http://localhost:8000/
 
 Caso necessite executar a suíte de testes use o comando abaixo:
 
