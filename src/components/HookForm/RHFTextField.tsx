@@ -13,8 +13,8 @@ const RHFTextField = ({ name, ...props }: RHFTextFieldProps) => {
     <Controller
       name={name}
       control={control}
-      render={({ field, fieldState: { error } }) => (
-        <TextField {...field} error={error?.message} {...props} />
+      render={({ field: { ref, ...field }, fieldState: { error } }) => (
+        <TextField {...field} error={error?.message} innerRef={ref} {...props} />
       )}
     />
   );

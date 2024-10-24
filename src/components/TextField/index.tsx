@@ -8,9 +8,19 @@ export interface TextFieldProps extends InputHTMLAttributes<any> {
   label?: string;
   error?: string;
   mask?: (value: any) => string;
+  innerRef?: (element: HTMLElement | null) => void;
 }
 
-const TextField = ({ label, error, style, value, mask, ...props }: TextFieldProps) => {
+const TextField = ({
+  label,
+  error,
+  style,
+  value,
+  mask,
+  onChange,
+  innerRef,
+  ...props
+}: TextFieldProps) => {
   return (
     <S.TextField data-testid="textfield" style={style}>
       {label && (
@@ -19,9 +29,12 @@ const TextField = ({ label, error, style, value, mask, ...props }: TextFieldProp
         </Typography>
       )}
       <S.Input
+        ref={innerRef}
+        $error={!!error}
+        autoComplete="off"
         data-testid="textfield-input"
-        error={!!error}
         value={mask ? mask(value) : value}
+        onChange={(e) => onChange && onChange(e)}
         {...props}
       />
       {error && (
@@ -30,6 +43,7 @@ const TextField = ({ label, error, style, value, mask, ...props }: TextFieldProp
           color="error"
           variant="caption"
           style={{
+            bottom: -20,
             position: "absolute",
           }}
         >
