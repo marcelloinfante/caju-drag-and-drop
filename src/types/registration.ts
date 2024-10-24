@@ -19,7 +19,7 @@ export interface RegistrationRead extends RegistrationBase {
 
 export interface RegistrationCreate extends RegistrationBase {}
 
-export interface RegistrationFactoryProps {
+export interface RegistrationFactoryAttrs {
   cpf?: string;
   name?: string;
   date?: string;

@@ -1,4 +1,3 @@
-import isEqual from "lodash/isEqual";
 import { faker } from "@faker-js/faker";
 
 import { generateRandomCpf } from "@/utils/generateRandomCpf";
@@ -23,16 +22,10 @@ describe("RegistrationFactory", () => {
     );
   });
 
-  it("should create multiple objects when create is create_dump", () => {
-    const registrations = RegistrationFactory.create_dump(5);
+  it("should create multiple instances with attrs when create is called", () => {
+    const registrations = RegistrationFactory.create(5, { status: StatusEnum.APPROVED });
 
-    registrations.forEach((registration) => expect(registration).toBeInstanceOf(Object));
-  });
-
-  it("should return object when dump is called", () => {
-    const registration = new RegistrationFactory();
-
-    expect(isEqual(registration.dump(), { ...registration })).toBeTruthy();
+    registrations.forEach((registration) => expect(registration.status).toBe(StatusEnum.APPROVED));
   });
 
   it.each([

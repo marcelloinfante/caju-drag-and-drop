@@ -5,7 +5,7 @@ import { generateRandomDate } from "@/utils/generateRandomDate";
 
 import { BaseFactory } from "./base";
 
-import { StatusEnum, RegistrationRead, RegistrationFactoryProps } from "@/types";
+import { StatusEnum, RegistrationRead, RegistrationFactoryAttrs } from "@/types";
 
 export class RegistrationFactory extends BaseFactory implements RegistrationRead {
   id: string;
@@ -16,7 +16,7 @@ export class RegistrationFactory extends BaseFactory implements RegistrationRead
   index: number;
   status: StatusEnum;
 
-  constructor({ cpf, name, date, email, index, status }: RegistrationFactoryProps = {}) {
+  constructor({ cpf, name, date, email, index, status }: RegistrationFactoryAttrs = {}) {
     super();
     this.id = faker.string.uuid();
     this.cpf = cpf || generateRandomCpf();
@@ -25,5 +25,12 @@ export class RegistrationFactory extends BaseFactory implements RegistrationRead
     this.email = email || faker.internet.email();
     this.index = index || 0;
     this.status = status || StatusEnum.REVIEW;
+  }
+
+  static create(
+    numberOfInstances: number,
+    attrs?: RegistrationFactoryAttrs
+  ): RegistrationFactory[] {
+    return super.create(numberOfInstances, attrs) as RegistrationFactory[];
   }
 }
