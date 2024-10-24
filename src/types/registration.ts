@@ -18,3 +18,12 @@ export interface RegistrationRead extends RegistrationBase {
 }
 
 export interface RegistrationCreate extends RegistrationBase {}
+
+export interface RegistrationFactoryProps {
+  cpf?: string;
+  name?: string;
+  date?: string;
+  email?: string;
+  index?: number;
+  status?: StatusEnum;
+}
