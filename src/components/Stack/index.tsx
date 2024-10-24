@@ -5,7 +5,6 @@ import * as S from "./styles";
 interface StackProps extends HTMLAttributes<HTMLDivElement> {
   spacing?: string;
   children?: ReactNode;
-  style?: React.CSSProperties;
   direction?: "column-reverse" | "column" | "row-reverse" | "row";
   innerRef?: (element: HTMLElement | null) => void;
 }

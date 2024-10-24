@@ -76,7 +76,7 @@ const NewUserPage = () => {
   });
 
   return (
-    <Container maxWidth="sm" style={{ height: "100%", justifyContent: "center" }}>
+    <Container maxWidth="lg" style={{ height: "100%", justifyContent: "center" }}>
       <FormProvider methods={methods} onSubmit={onSubmit}>
         <Card>
           <Stack spacing="24px">

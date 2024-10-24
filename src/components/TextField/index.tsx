@@ -7,7 +7,6 @@ import * as S from "./styles";
 export interface TextFieldProps extends InputHTMLAttributes<any> {
   label?: string;
   error?: string;
-  style?: React.CSSProperties;
   mask?: (value: any) => string;
 }
 

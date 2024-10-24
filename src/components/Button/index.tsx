@@ -7,7 +7,6 @@ import * as S from "./styles";
 
 interface ButtonProps extends ButtonHTMLAttributes<any> {
   children: ReactNode;
-  style?: React.CSSProperties;
   size?: "small" | "medium" | "large";
   color?: "primary" | "secondary" | "success" | "error" | "info" | "warning";
 }
