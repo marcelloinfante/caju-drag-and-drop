@@ -5,38 +5,11 @@ import { DragDropContext } from "@hello-pangea/dnd";
 import { registrationColumns } from "@/theme/palette";
 
 import Column, { ColumnProps } from ".";
+import { RegistrationFactory } from "@/factories";
 
-import { StatusEnum, RegistrationRead } from "@/types";
+import { StatusEnum } from "@/types";
 
-const registrations: RegistrationRead[] = [
-  {
-    id: "1",
-    index: 0,
-    cpf: "78502270001",
-    status: StatusEnum.REVIEW,
-    email: "jose@caju.com.br",
-    name: "José Leão",
-    date: "22/10/2023",
-  },
-  {
-    id: "2",
-    index: 1,
-    cpf: "56642105087",
-    status: StatusEnum.REVIEW,
-    email: "luiz@caju.com.br",
-    name: "Luiz Filho",
-    date: "23/10/2023",
-  },
-  {
-    id: "3",
-    index: 2,
-    cpf: "12345678901",
-    status: StatusEnum.REVIEW,
-    email: "ana@caju.com.br",
-    name: "Ana Silva",
-    date: "24/10/2023",
-  },
-];
+const registrations = RegistrationFactory.create(3);
 
 const renderColumn = ({ ...props }: ColumnProps) => {
   const onDragEnd = jest.fn();

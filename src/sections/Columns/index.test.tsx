@@ -6,98 +6,13 @@ import { RegistrationContext, RegistrationContextType } from "@/contexts/registr
 import { SnackbarProvider } from "@/components/Snackbar";
 
 import Columns from ".";
+import { RegistrationFactory } from "@/factories";
 
-import { StatusEnum, RegistrationRead } from "@/types";
+import { StatusEnum } from "@/types";
 
-const reviewRegistrations: RegistrationRead[] = [
-  {
-    id: "1",
-    index: 0,
-    cpf: "78502270001",
-    status: StatusEnum.REVIEW,
-    email: "jose@caju.com.br",
-    name: "José Leão",
-    date: "22/10/2023",
-  },
-  {
-    id: "2",
-    index: 1,
-    cpf: "56642105087",
-    status: StatusEnum.REVIEW,
-    email: "luiz@caju.com.br",
-    name: "Luiz Filho",
-    date: "23/10/2023",
-  },
-  {
-    id: "3",
-    index: 2,
-    cpf: "12345678901",
-    status: StatusEnum.REVIEW,
-    email: "ana@caju.com.br",
-    name: "Ana Silva",
-    date: "24/10/2023",
-  },
-];
-
-const approvedRegistrations: RegistrationRead[] = [
-  {
-    id: "4",
-    index: 0,
-    cpf: "78502270001",
-    status: StatusEnum.APPROVED,
-    email: "jose@caju.com.br",
-    name: "José Leão",
-    date: "22/10/2023",
-  },
-  {
-    id: "5",
-    index: 1,
-    cpf: "56642105087",
-    status: StatusEnum.APPROVED,
-    email: "luiz@caju.com.br",
-    name: "Luiz Filho",
-    date: "23/10/2023",
-  },
-  {
-    id: "6",
-    index: 2,
-    cpf: "12345678901",
-    status: StatusEnum.APPROVED,
-    email: "ana@caju.com.br",
-    name: "Ana Silva",
-    date: "24/10/2023",
-  },
-];
-
-const reprovedRegistrations: RegistrationRead[] = [
-  {
-    id: "7",
-    index: 0,
-    cpf: "78502270001",
-    status: StatusEnum.REPROVED,
-    email: "jose@caju.com.br",
-    name: "José Leão",
-    date: "22/10/2023",
-  },
-  {
-    id: "8",
-    index: 1,
-    cpf: "56642105087",
-    status: StatusEnum.REPROVED,
-    email: "luiz@caju.com.br",
-    name: "Luiz Filho",
-    date: "23/10/2023",
-  },
-  {
-    id: "9",
-    index: 2,
-    cpf: "12345678901",
-    status: StatusEnum.REPROVED,
-    email: "ana@caju.com.br",
-    name: "Ana Silva",
-    date: "24/10/2023",
-  },
-];
+const reviewRegistrations = RegistrationFactory.create(3, { status: StatusEnum.REVIEW });
+const approvedRegistrations = RegistrationFactory.create(3, { status: StatusEnum.APPROVED });
+const reprovedRegistrations = RegistrationFactory.create(3, { status: StatusEnum.REPROVED });
 
 const renderColumn = () => {
   const updateRegistrations = jest.fn();

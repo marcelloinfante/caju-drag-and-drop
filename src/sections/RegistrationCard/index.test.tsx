@@ -9,18 +9,11 @@ import { RegistrationContext, RegistrationContextType } from "@/contexts/registr
 import { SnackbarProvider } from "@/components/Snackbar";
 
 import RegistrationCard from ".";
+import { RegistrationFactory } from "@/factories";
 
 import { StatusEnum } from "@/types";
 
-const registrationData = {
-  id: "1",
-  index: 0,
-  cpf: "78502270001",
-  status: StatusEnum.REVIEW,
-  email: "jose@caju.com.br",
-  name: "José Leão",
-  date: "22/10/2023",
-};
+const registration = new RegistrationFactory();
 
 const renderRegistrationCard = () => {
   const onDragEnd = jest.fn();
@@ -39,7 +32,7 @@ const renderRegistrationCard = () => {
           <Droppable droppableId={StatusEnum.REVIEW}>
             {(provided) => (
               <div ref={provided.innerRef} {...provided.droppableProps}>
-                <RegistrationCard registration={registrationData} />
+                <RegistrationCard registration={registration} />
               </div>
             )}
           </Droppable>
@@ -69,7 +62,7 @@ describe("RegistrationCard", () => {
       (data) => {
         renderRegistrationCard();
 
-        let text = registrationData[data];
+        let text = registration[data];
 
         if (data === "cpf") {
           text = maskCpf(text);
