@@ -1,5 +1,5 @@
 export const generateRandomCpf = (): string => {
-  let numbers = [];
+  const numbers = [];
 
   for (let i = 0; i < 12; i++) {
     const randomNumber = Math.floor(Math.random() * 10);
