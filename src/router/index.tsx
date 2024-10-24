@@ -1,4 +1,4 @@
-import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import routes from "./routes";
 
@@ -9,13 +9,11 @@ const Router = () => {
   return (
     <div style={{ paddingTop: 64, height: "100%" }}>
       <BrowserRouter>
-        <Switch>
-          <Route exact path={routes.dashboard} component={DashboardPage} />
-          <Route exact path={routes.newUser} component={NewUserPage} />
-          <Route exact path="/">
-            <Redirect to={routes.dashboard} />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route path={routes.dashboard} element={<DashboardPage />} />
+          <Route path={routes.newUser} element={<NewUserPage />} />
+          <Route path="/" element={<Navigate to={routes.dashboard} replace />} />
+        </Routes>
       </BrowserRouter>
     </div>
   );

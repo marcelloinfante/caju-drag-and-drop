@@ -1,4 +1,4 @@
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { HiOutlineArrowLeft } from "react-icons/hi";
 
 import * as Yup from "yup";
@@ -25,10 +25,10 @@ const NewUserPage = () => {
   const { createRegistration } = useRegistrationContext();
   const { enqueueSnackbar } = useSnackbar();
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const goToHome = () => {
-    history.push(routes.dashboard);
+    navigate(routes.dashboard);
   };
 
   const CreateRegistrationSchema: Yup.ObjectSchema<RegistrationCreate> = Yup.object().shape({
