@@ -3,7 +3,7 @@
   "containerDefinitions": [
     {
       "name": "caju-container",
-      "image": "851725231124.dkr.ecr.us-east-1.amazonaws.com/caju",
+      "image": "851725231124.dkr.ecr.us-east-1.amazonaws.com/caju:a5035eaf1d30ffe76cfbcc296e1c5255d2ecaa90",
       "cpu": 0,
       "portMappings": [
         {
@@ -22,10 +22,15 @@
           "value": ""
         }
       ],
-      "environmentFiles": [],
       "mountPoints": [],
       "volumesFrom": [],
-      "ulimits": [],
+      "healthCheck": {
+        "command": ["CMD-SHELL", "curl -f http://localhost/ || exit 1"],
+        "interval": 30,
+        "timeout": 5,
+        "retries": 5,
+        "startPeriod": 30
+      },
       "systemControls": []
     }
   ],
