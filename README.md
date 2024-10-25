@@ -146,3 +146,16 @@ yarn init:db
 4. Acesse `http://localhost:3000/`
 
 ## Testes
+
+Eu utilizei o Jest para escrever os testes unitários.
+
+Para rodar os testes:
+
+```shell
+yarn jest
+```
+
+```shell
+docker compose run frontend yarn jest
+```
+
