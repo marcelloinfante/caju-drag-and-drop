@@ -152,6 +152,8 @@ yarn init:db
 
 Eu utilizei o Jest para escrever os testes unitários.
 
+![Gravando2024-10-25150427-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/7610d4fc-47ec-4296-bf0d-8237a3f6a2b8)
+
 Para rodar os testes:
 
 ```shell
