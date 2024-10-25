@@ -1,136 +1,105 @@
-# Caju Front End Teste
+# Teste Caju Front-end - Solução
 
-Esse é um desafio técnico para você demonstrar suas habilidades como frontend, sua missão será dar continuidade ao desenvolvimento da plataforma de admissão que consiste em duas telas, a tela de `Dashboard` e uma tela de `Cadastro`.
+Esse é a conclusão do desafio técnico da vaga de Front-End da Caju Benefícios. Abaixo vou listar as especificações e requisitos para a conclusão do teste, e coisas foram feitas fora do solicitado.
 
-O `Dashboard` mostra todas as admissões criadas, com as opções de aprovar, reprovar e excluir.
+## Features Implementadas
 
-![Screenshot 2024-06-11 at 11 48 24 AM](https://github.com/caju-beneficios/caju-front-teste-1/assets/31169925/fedeff5c-a0d3-4df1-aebd-1f2d25c56a48)
+### Dashboard
 
-Dashboard com a listagem das admissões.
+- [x] Implementar `GET` ao carregar a pagina e ao fazer pequisa por `CPF`
+- [x] Filtrar os cards por coluna, usando o status.
+- [x] Implementar `PUT` ao clicar em Reprovar e alterar o status para `REPROVED`
+- [x] Implementar `PUT` ao clicar em Aprovar e alterar o status para `APPROVED`
+- [x] Implementar `PUT` ao clicar em Revisar novamente e alterar o status para `REVIEW`
+- [x] Implementar `DELETE` ao clicar no lixeira no card.
+- [x] O botão de `Reprovar` e `Aprovar` só deve aparecer em admissões com o status `REVIEW`
+- [x] O botão `Revisar novamente` só deve aparecer em admissões com o status `REPROVED` ou `APPROVED`
+- [x] Implementar um loading na tela ao realizar requisições.
+- [x] Todas as ações devem ter modal de confirmação e uma notificação de sucesso ou erro
+- [x] Na pesquisa por CPF realizar a requisição automaticamente ao preencher um CPF válido
+- [x] Adicionar máscara de CPF no campo de pesquisa.
+- [x] Atualizar os dados (refetch) ao clicar no ícone de atualizar
 
-![Screenshot 2024-06-11 at 1 52 35 PM](https://github.com/caju-beneficios/caju-front-teste-1/assets/31169925/3b002341-454b-4b24-82cb-6390656b56cc)
+### Formulário de Cadastro
 
-A tela de `Cadastro` exibe um formulário simples que será utilizado para criar as admissões.
+- [x] Implementar validação no campo de `email` para que aceite apenas emails válidos
+- [x] Implementar validação no campo `nome completo` para que aceite pelo menos um espaço, no mínimo duas letras, e que a primeira letra não seja um número.
+- [x] Implementar validação no campo CPF para aceitar apenas CPFs válidos e adicionar uma máscara de CPF ao campo.
+- [x] Implementar `POST` ao preencher todos os campos corretamentes.
+- [x] Redirecionar ao `/dashboard` ao criar uma nova admissão.
 
-![Screenshot 2024-06-11 at 11 48 47 AM](https://github.com/caju-beneficios/caju-front-teste-1/assets/31169925/bbbb211c-165f-40e5-b2af-61adafd61398)
+## Novas Features
 
-## Apresentação do problema
+### Drag and Drop
 
-O desafio é aprimorar o código existente e implementar as funcionalidades que estão incompletas, use a sua experiência para identificar e propor soluções para os problemas encontrados.
-Sinta-se a vontade para refatorar, criar novas pastas, componentes, hooks, utils e o que mais achar necessário para garantir que o projeto esteja organizado e segue as boas práticas de desenvolvimento.
+Foi adicionado a feature de Drag and Drop para mudar registros de colunas e para mudar a ordem dos registros com a finalidade de melhorar a experiencia do usuário.
 
-## Especificações
+![Gravando2024-10-25141625-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/1bfc2fcd-3eb3-43ed-80e1-2e819baecf5a)
+![Gravando2024-10-25142152-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/acca058d-9d91-4bb9-b227-671062c0487e)
 
-### Tela Dashboard
+### Docker
 
-- Implementar `GET` ao carregar a pagina e ao fazer pesquisa por `CPF`
-- Filtrar os cards por coluna, usando o status.
-- Implementar `PUT` ao clicar em Reprovar e alterar o status para `REPROVED`
-- Implementar `PUT` ao clicar em Aprovar e alterar o status para `APPROVED`
-- Implementar `PUT` ao clicar em Revisar novamente e alterar o status para `REVIEW`
-- Implementar `DELETE` ao clicar no lixeira no card.
-- O botão de `Reprovar` e `Aprovar` só deve aparecer em admissões com o status `REVIEW`
-- O botão `Revisar novamente` só deve aparecer em admissões com o status `REPROVED` ou `APPROVED`
-- Implementar um loading na tela ao realizar requisições.
-- Todas as ações devem ter modal de confirmação e uma notificação de sucesso ou erro
-- Na pesquisa por CPF realizar a requisição automaticamente ao preencher um CPF válido
-- Adicionar máscara de CPF no campo de pesquisa.
-- Atualizar os dados (refetch) ao clicar no ícone de atualizar
+O Docker foi adicionado para facilitar a execução e deploy da aplicação.
 
-### Tela Cadastro
+### Design Pattern
 
-- Implementar validação no campo de `email` para que aceite apenas emails válidos
-- Implementar validação no campo `nome completo` para que aceite pelo menos um espaço, no mínimo duas letras, e que a primeira letra não seja um número.
-- Implementar validação no campo CPF para aceitar apenas CPFs válidos e adicionar uma máscara de CPF ao campo.
-- Implementar `POST` ao preencher todos os campos corretamente.
-- Redirecionar ao `/dashboard` ao criar uma nova admissão.
+#### Factory Pattern
+![image](https://github.com/user-attachments/assets/ed3bb5d2-2b4c-42f5-9725-9f49865fc946)
 
-## API
+Como Design Pattern foi utilizado o Factory Pattern para a criação de novas instancia de registro para facilitar a execução dos testes.
 
-Você consumirá uma API mockada localmente, que será executada utilizando o json-server. Para mais informações consulte a [documentação](https://github.com/typicode/json-server/).
 
-Exemplo de Requisição:
+### Design System
 
-```
-POST http://localhost:8000/registrations
-Content-Type: application/json
-{
-  "date": "23/10/2023",
-  "email": "maria@caju.com.br",
-  "name": "Maria Silva",
-  "status": "REVIEW",
-  "cpf": "12345678901"
-}
-```
+Ao invés de somente criar as página, eu decidi criar um design system que padronizasse os componentes da aplicação.
+Para isso, me inspirei no Atomic Design para criar componentes padronizados e reutilizaveis.
 
-Para realizar a pesquisa por CPF, utilize essa funcionalidade do json-web-server:
-<br/>
-https://github.com/typicode/json-server/tree/v0?tab=readme-ov-file#filter
+## Testes
 
-## Extras (opcional)
+## CI/CD
 
-- Testes Unitários e de Integração `(Obrigatório para Senior e Tech Lead)`
-- End-to-End (E2E)
-- Configuração de CI/CD com deploy automatizado
+## Rodar o projeto
 
-## Dicas e sugestões
-
-- Faça bom uso da componentização
-- Garanta que a aplicação é performática
-- Faça bom uso do HTML e WAI-ARIA
-- Garanta uma experiência fluida e acessível
-- Utilize conceitos (SOLID, DRY, KISS, Clean code) e design patterns
-- Crie testes coesos e que garantam o bom funcionamento da aplicação
-
-### Sua performance será avaliada com base nos seguintes pontos:
-
-- A aplicação funciona conforme o esperado seguindo todas as especificações
-- O código é claro e de fácil entendimento
-- Conhecimento em HTML, CSS, JavaScript / TypeScript e React
-- Experiência do usuário
-- Arquitetura (conceitos, patterns, algoritmos, forma como os problemas foram solucionados)
-- Boas práticas de desenvolvimento
-- Proficiência com automação de testes. Não exigimos 100% de cobertura
-- Senso crítico e analítico
-
-`Nos surpreenda demonstrando toda a sua habilidade e conhecimento.`
-
-## Iniciando o desenvolvimento
-
-Realize o clone do repositório e instale as dependências
+1. Realize o clone do repositório
 
 ```shell
 git clone https://github.com/caju-beneficios/caju-front-teste-1.git
 cd caju-front-test-1
 ```
 
+### Docker
+
+2. Instale o [Docker Desktop](https://www.docker.com/products/docker-desktop/) em sua máquina caso esteja utilizando Windows.
+3. Inicialize o Docker abrindo o Docker Desktop.
+4. Adicione as variáveis de ambiente no arquivo `.env`.
+5. Rode a aplicação:
+
 ```shell
-yarn install
+docker compose up --build
 ```
+
+6. Acesse `http://localhost:3000/`
+
+### Manualmente
 
 Inicie o servidor do Json Web Server para consumir a API
 
+2. Instale as dependencias
+
 ```shell
-yarn init:db
+yarn
 ```
 
-Execute a aplicação
+3. Execute a aplicação
 
 ```shell
 yarn dev
 ```
 
-Se tudo ocorreu bem os seguintes serviços estarão disponíveis em:
-<br/>
-
-Aplicação http://localhost:3001/
-<br/>
-Json Web Server http://localhost:8000/
-
-Caso necessite executar a suíte de testes use o comando abaixo:
+3. Execute o Json-Server
 
 ```shell
-yarn test:dev
+yarn init:db
 ```
 
-Para concluir o desenvolvimento faça as edições necessárias e depois envie a URL do novo repositório com suas alterações para o RH.
+4. Acesse `http://localhost:3000/`
