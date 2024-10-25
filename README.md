@@ -154,6 +154,8 @@ Para rodar os testes:
 yarn jest
 ```
 
+ou
+
 ```shell
 docker compose run frontend yarn jest
 ```
