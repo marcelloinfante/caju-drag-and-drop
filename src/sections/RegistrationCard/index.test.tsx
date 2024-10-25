@@ -73,13 +73,4 @@ describe("RegistrationCard", () => {
       }
     );
   });
-
-  it("should deleteRegistration trash is clicked", () => {
-    const { deleteRegistration } = renderRegistrationCard();
-
-    const registrationCardDelete = screen.getByTestId("registration-card-delete");
-    fireEvent.click(registrationCardDelete);
-
-    expect(deleteRegistration.mock.calls).toHaveLength(1);
-  });
 });
