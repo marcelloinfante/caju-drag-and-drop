@@ -3,7 +3,7 @@
   "containerDefinitions": [
     {
       "name": "caju-container",
-      "image": "851725231124.dkr.ecr.us-east-1.amazonaws.com/caju:a5035eaf1d30ffe76cfbcc296e1c5255d2ecaa90",
+      "image": "851725231124.dkr.ecr.us-east-1.amazonaws.com/caju:90381e1fe840340343516b3cd6851983f2fcb029",
       "cpu": 0,
       "portMappings": [
         {
@@ -17,6 +17,10 @@
       "essential": true,
       "entryPoint": ["yarn preview"],
       "environment": [
+        {
+          "name": "VITE_HOST_API",
+          "value": "http://localhost:8000"
+        },
         {
           "name": "localhost:8000",
           "value": ""
