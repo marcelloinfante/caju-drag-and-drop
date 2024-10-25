@@ -16,7 +16,7 @@ const DashboardPage = () => {
   }, []);
 
   return (
-    <Container>
+    <Container style={{ height: "100%" }}>
       <SearchBar />
       <Columns />
       {loading && <Loading />}
