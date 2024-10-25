@@ -221,38 +221,44 @@ const RegistrationProvider = ({ children }: Props) => {
     []
   );
 
+  // TODO: improve deleteRegistration
   const deleteRegistration = useCallback(
     async (id: string) => {
       const { data: registration } = await axios.delete<RegistrationRead>(
         endpoints.registrations.item(id)
       );
 
-      if (registration.status === StatusEnum.REVIEW) {
-        state.reviewRegistrations = state.reviewRegistrations.filter(
-          (item) => item.id !== registration.id
-        );
-      }
+      const statusRegistrations: RegistrationRead[] = [];
 
-      if (registration.status === StatusEnum.APPROVED) {
-        state.approvedRegistrations = state.approvedRegistrations.filter(
-          (item) => item.id !== registration.id
-        );
-      }
+      const payload = {
+        reviewRegistrations: state.reviewRegistrations,
+        approvedRegistrations: state.approvedRegistrations,
+        reprovedRegistrations: state.reprovedRegistrations,
+      };
 
-      if (registration.status === StatusEnum.REPROVED) {
-        state.reprovedRegistrations = state.reprovedRegistrations.filter(
-          (item) => item.id !== registration.id
-        );
-      }
+      const statusRegistrationName: {
+        [K in StatusEnum]: keyof typeof payload;
+      } = {
+        [StatusEnum.REVIEW]: "reviewRegistrations",
+        [StatusEnum.APPROVED]: "approvedRegistrations",
+        [StatusEnum.REPROVED]: "reprovedRegistrations",
+      };
 
-      dispatch({
-        type: Types.DELETE_REGISTRATION,
-        payload: {
-          reviewRegistrations: state.reviewRegistrations,
-          approvedRegistrations: state.approvedRegistrations,
-          reprovedRegistrations: state.reprovedRegistrations,
-        },
+      const registrationName = statusRegistrationName[registration.status];
+      const stateRegistrations: RegistrationRead[] = payload[registrationName];
+
+      stateRegistrations.forEach((item) => {
+        if (item.id !== registration.id)
+          statusRegistrations.push({ ...item, index: statusRegistrations.length });
       });
+
+      payload[registrationName] = statusRegistrations;
+
+      updateRegistrations(
+        payload.reviewRegistrations,
+        payload.approvedRegistrations,
+        payload.reprovedRegistrations
+      );
     },
     [state]
   );
