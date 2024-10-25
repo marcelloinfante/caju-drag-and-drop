@@ -98,6 +98,8 @@ Para a execução de CI e para garantir a qualidade do código, foi utilizado o 
 ### CD
 Para realizar o deploy da aplicação, foi utilizado Github Action, Docker e AWS ECS
 
+![Enterprise AWS_page-0001](https://github.com/user-attachments/assets/01d73c3f-e753-498f-8d4c-ef65337ac80b)
+
 ## Rodar o projeto
 
 1. Realize o clone do repositório
