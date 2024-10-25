@@ -1,3 +1,6 @@
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
 import globals from "globals";
 import pluginJs from "@eslint/js";
 import tseslint from "typescript-eslint";
@@ -6,8 +9,15 @@ import pluginImport from "eslint-plugin-import";
 import pluginJsxA11y from "eslint-plugin-jsx-a11y";
 import pluginPrettier from "eslint-config-prettier";
 
+import { includeIgnoreFile } from "@eslint/compat";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const gitignorePath = path.resolve(__dirname, ".gitignore");
+
 export default [
-  { files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"], ignore: "dist" },
+  includeIgnoreFile(gitignorePath),
+  { files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"] },
   { languageOptions: { globals: globals.browser } },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
