@@ -1,3 +1,4 @@
+![Design sem nome](https://github.com/user-attachments/assets/bf13773a-88c8-40cf-b41c-1d6bca720f8c)
 # Teste Caju Front-end - Solução
 
 Esse é a conclusão do desafio técnico da vaga de Front-End da Caju Benefícios. Abaixo vou listar as especificações e requisitos para a conclusão do teste, e coisas foram feitas fora do solicitado.
@@ -46,17 +47,57 @@ O Docker foi adicionado para facilitar a execução e deploy da aplicação.
 #### Factory Pattern
 ![image](https://github.com/user-attachments/assets/ed3bb5d2-2b4c-42f5-9725-9f49865fc946)
 
-Como Design Pattern foi utilizado o Factory Pattern para a criação de novas instancia de registro para facilitar a execução dos testes.
+Como Design Pattern, foi utilizado o Factory Pattern para a criação de novas instancia de registro para facilitar a execução dos testes.
 
 
-### Design System
+### Arquitetura
 
 Ao invés de somente criar as página, eu decidi criar um design system que padronizasse os componentes da aplicação.
-Para isso, me inspirei no Atomic Design para criar componentes padronizados e reutilizaveis.
+Para isso, me inspirei no Atomic Design para criar componentes padronizados e reutilizáveis.
 
-## Testes
+```
+src
+├── components
+│   ├── Button
+│   ├── Card
+│   ├── Container
+│   ├── HookForm
+│   ├── IconButton
+│   ├── Modal
+│   ├── Snackbar
+│   ├── Stack
+│   ├── TextField
+│   └── Typography
+├── constants
+├── contexts
+│   └── registration
+├── factories
+├── hooks
+├── layouts
+├── locales
+├── pages
+│   ├── Dashboard
+│   └── NewUser
+├── router
+├── sections
+│   ├── Column
+│   ├── Columns
+│   ├── Header
+│   ├── Loading
+│   ├── RegistrationCard
+│   └── SearchBar
+├── theme
+├── types
+└── utils
+```
 
 ## CI/CD
+
+### CI
+Para a execução de CI e para garantir a qualidade do código, foi utilizado o Github Actions, Docker, Jest e Eslint.
+
+### CD
+Para realizar o deploy da aplicação, foi utilizado Github Action, Docker e AWS ECS
 
 ## Rodar o projeto
 
@@ -103,3 +144,5 @@ yarn init:db
 ```
 
 4. Acesse `http://localhost:3000/`
+
+## Testes
