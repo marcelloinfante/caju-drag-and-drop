@@ -8,7 +8,6 @@ export const Column = styled(Card)`
   height: auto;
   padding: 16px;
   display: flex;
-  margin-top: 24px;
   max-height: 95%;
   overflow: hidden;
   position: relative;
