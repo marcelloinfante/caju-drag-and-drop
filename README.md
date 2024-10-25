@@ -36,7 +36,6 @@ Esse é a conclusão do desafio técnico da vaga de Front-End da Caju Benefício
 Foi adicionado a feature de Drag and Drop para mudar registros de colunas e para mudar a ordem dos registros com a finalidade de melhorar a experiencia do usuário.
 
 ![Gravando2024-10-25141625-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/1bfc2fcd-3eb3-43ed-80e1-2e819baecf5a)
-![Gravando2024-10-25142152-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/acca058d-9d91-4bb9-b227-671062c0487e)
 
 ### Docker
 
