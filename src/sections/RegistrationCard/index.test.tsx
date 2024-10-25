@@ -1,5 +1,5 @@
 import "@testing-library/jest-dom";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { DragDropContext, Droppable } from "@hello-pangea/dnd";
 
 import { maskCpf } from "@/utils/cpfMask";

@@ -74,7 +74,7 @@ export const common = {
   white: "#FFFFFF",
 };
 
-export const text = {
+export const text: any = {
   primary: primary.main,
   secondary: secondary.main,
   success: success.main,
