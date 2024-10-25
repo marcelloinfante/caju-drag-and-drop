@@ -2,7 +2,7 @@
 
 # Teste Caju Front-end - Solução
 
-Esse é a conclusão do desafio técnico da vaga de Front-End da Caju Benefícios. Abaixo vou listar as especificações e requisitos para a conclusão do teste, e coisas foram feitas fora do solicitado.
+Esse é a conclusão do desafio técnico da vaga de Front-End da Caju.
 
 ## Features Implementadas
 
