@@ -13,7 +13,7 @@ env:
 
   ECS_CLUSTER_FRONT_END: caju-front
   ECS_SERVICE_FRONT_END: caju-front
-  ECS_TASK_DEFINITION_FRONT_END: caju-front:2
+  ECS_TASK_DEFINITION_FRONT_END: task-definition.json
 
   ECS_CLUSTER_BACK_END: caju-back
   ECS_SERVICE_BACK_END: caju-back
