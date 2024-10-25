@@ -1,10 +1,6 @@
 import * as S from "./styles";
 
-interface IconButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
-  children?: React.ReactNode;
-}
-
-const IconButton = ({ children, ...props }: IconButtonProps) => {
+const IconButton = ({ children, ...props }: React.HTMLAttributes<HTMLButtonElement>) => {
   return (
     <S.IconButton data-testid="icon-button" {...props}>
       {children}

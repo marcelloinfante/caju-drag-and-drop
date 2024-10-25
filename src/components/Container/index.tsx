@@ -1,11 +1,10 @@
-import { ReactNode, HTMLAttributes } from "react";
+import { HTMLAttributes } from "react";
 
 import { sizes } from "@/theme/responsive";
 
 import * as S from "./styles";
 
 interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
-  children: ReactNode;
   maxWidth?: "xs" | "sm" | "md" | "lg" | "xl";
 }
 

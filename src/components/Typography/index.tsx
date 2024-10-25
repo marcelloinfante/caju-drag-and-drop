@@ -1,4 +1,4 @@
-import { ReactNode, HTMLAttributes } from "react";
+import { HTMLAttributes } from "react";
 
 import { text } from "@/theme/palette";
 import { typography } from "@/theme/typography";
@@ -6,7 +6,6 @@ import { typography } from "@/theme/typography";
 import * as S from "./styles";
 
 interface TypographyProps extends HTMLAttributes<HTMLSpanElement> {
-  children?: ReactNode;
   align?: "center" | "inherit" | "justify" | "left" | "right";
   color?:
     | "primary"

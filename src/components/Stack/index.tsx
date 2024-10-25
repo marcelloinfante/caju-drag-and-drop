@@ -1,10 +1,9 @@
-import { ReactNode, HTMLAttributes } from "react";
+import { HTMLAttributes } from "react";
 
 import * as S from "./styles";
 
 interface StackProps extends HTMLAttributes<HTMLDivElement> {
   spacing?: string;
-  children?: ReactNode;
   direction?: "column-reverse" | "column" | "row-reverse" | "row";
   innerRef?: (element: HTMLElement | null) => void;
 }

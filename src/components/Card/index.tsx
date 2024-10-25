@@ -1,9 +1,8 @@
-import { ReactNode, HTMLAttributes } from "react";
+import { HTMLAttributes } from "react";
 
 import * as S from "./styles";
 
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
-  children: ReactNode;
   innerRef?: (element: HTMLElement | null) => void;
 }
 
