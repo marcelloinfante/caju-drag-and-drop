@@ -1,4 +1,5 @@
 ![Design sem nome](https://github.com/user-attachments/assets/bf13773a-88c8-40cf-b41c-1d6bca720f8c)
+
 # Teste Caju Front-end - Solução
 
 Esse é a conclusão do desafio técnico da vaga de Front-End da Caju Benefícios. Abaixo vou listar as especificações e requisitos para a conclusão do teste, e coisas foram feitas fora do solicitado.
@@ -44,10 +45,10 @@ O Docker foi adicionado para facilitar a execução e deploy da aplicação.
 ### Design Pattern
 
 #### Factory Pattern
+
 ![image](https://github.com/user-attachments/assets/ed3bb5d2-2b4c-42f5-9725-9f49865fc946)
 
 Como Design Pattern, foi utilizado o Factory Pattern para a criação de novas instancia de registro para facilitar a execução dos testes.
-
 
 ### Arquitetura
 
@@ -93,9 +94,11 @@ src
 ## CI/CD
 
 ### CI
+
 Para a execução de CI e para garantir a qualidade do código, foi utilizado o Github Actions, Docker, Jest e Eslint.
 
 ### CD
+
 Para realizar o deploy da aplicação, foi utilizado Github Action, Docker e AWS ECS
 
 ## Rodar o projeto
@@ -160,4 +163,3 @@ ou
 ```shell
 docker compose run frontend yarn jest
 ```
-
