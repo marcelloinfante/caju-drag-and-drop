@@ -39,6 +39,9 @@ jobs:
       - name: Run linter
         run: docker run caju:latest yarn lint
 
+      - name: Run type checking
+        run: docker run caju:latest yarn type:check
+
   # deploy-front-end:
   #   name: Deploy Front-end
   #   runs-on: ubuntu-latest

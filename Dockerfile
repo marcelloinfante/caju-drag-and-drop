@@ -6,5 +6,3 @@ COPY package.json .
 RUN yarn
 
 COPY . .
-
-RUN yarn build
