@@ -107,11 +107,12 @@ git clone https://github.com/caju-beneficios/caju-front-teste-1.git
 cd caju-front-test-1
 ```
 
+2. Adicione as variáveis de ambiente no arquivo `.env`.
+
 ### Docker
 
-2. Instale o [Docker Desktop](https://www.docker.com/products/docker-desktop/) em sua máquina caso esteja utilizando Windows.
-3. Inicialize o Docker abrindo o Docker Desktop.
-4. Adicione as variáveis de ambiente no arquivo `.env`.
+3. Instale o [Docker Desktop](https://www.docker.com/products/docker-desktop/) em sua máquina caso esteja utilizando Windows.
+4. Inicialize o Docker abrindo o Docker Desktop.
 5. Rode a aplicação:
 
 ```shell
@@ -124,13 +125,13 @@ docker compose up --build
 
 Inicie o servidor do Json Web Server para consumir a API
 
-2. Instale as dependencias
+3. Instale as dependencias
 
 ```shell
 yarn
 ```
 
-3. Execute a aplicação
+4. Execute a aplicação
 
 ```shell
 yarn dev
