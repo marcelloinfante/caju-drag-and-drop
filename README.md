@@ -48,7 +48,7 @@ O Docker foi adicionado para facilitar a execução e deploy da aplicação.
 
 ![image](https://github.com/user-attachments/assets/ed3bb5d2-2b4c-42f5-9725-9f49865fc946)
 
-Como Design Pattern, foi utilizado o Factory Pattern para a criação de novas instancia de registro para facilitar a execução dos testes.
+Como Design Pattern, foi utilizado o Factory Pattern para a criação de novas instâncias de registro para facilitar a execução dos testes.
 
 ### Arquitetura
 
@@ -113,6 +113,9 @@ cd caju-front-test-1
 ```
 
 2. Adicione as variáveis de ambiente no arquivo `.env`.
+```shell
+VITE_HOST_API=http://localhost:8000
+```
 
 ### Docker
 
