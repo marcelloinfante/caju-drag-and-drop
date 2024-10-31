@@ -113,6 +113,9 @@ cd caju-front-test-1
 ```
 
 2. Adicione as variáveis de ambiente no arquivo `.env`.
+```shell
+VITE_HOST_API=http://localhost:8000
+```
 
 ### Docker
 
